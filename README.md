@@ -1,13 +1,13 @@
 # SQL Practice Sessions
 This document contains a structured log of SQL queries practiced over multiple days. The queries cover fundamental database operations, table modifications, and various SQL commands.
 
-#28-Jan-2025 --> Day 1 : Introduction to SQL & RDBMS and Software installation
+# 28-Jan-2025 --> Day 1 : Introduction to SQL & RDBMS and Software installation
 
 
-#29-Jan-2025 --> Day 2 : MongoDB Certification - Registeration process & SQL Sub Languages Introduction
+# 29-Jan-2025 --> Day 2 : MongoDB Certification - Registeration process & SQL Sub Languages Introduction
 
 
-#30-Jan-2025 --> Day 3 : Data Definition Language & Data Manipulation Language
+# 30-Jan-2025 --> Day 3 : Data Definition Language & Data Manipulation Language
 
   SHOW DATABASES;
   CREATE DATABASE VIT;
@@ -48,7 +48,7 @@ This document contains a structured log of SQL queries practiced over multiple d
   );
 
 
-#31-Jan-2025 --> Day 4 : DCL and Transaction control language
+# 31-Jan-2025 --> Day 4 : DCL and Transaction control language
 
   Table Modifications & Queries
   
@@ -92,7 +92,7 @@ This document contains a structured log of SQL queries practiced over multiple d
 
 
 
-#1-Feb-2025 --> Day 5 :SQL Datatypes, Operators, Where Clause 
+# 1-Feb-2025 --> Day 5 :SQL Datatypes, Operators, Where Clause 
 
  Table Creation & Queries
   CREATE DATABASE ORG123;
@@ -136,7 +136,7 @@ Aggregate Functions
 
 
 
-#2-Feb-2025 --> Day 6 : Order By, Group By and alias name and distinct 
+# 2-Feb-2025 --> Day 6 : Order By, Group By and alias name and distinct 
 
 
   USE ORG123;

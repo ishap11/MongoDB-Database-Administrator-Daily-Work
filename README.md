@@ -50,8 +50,6 @@ This document contains a structured log of SQL queries practiced over multiple d
 
 # 31-Jan-2025 --> Day 4 : DCL and Transaction control language
 
-  Table Modifications & Queries
-  
   USE VIT;
   ALTER TABLE CSE RENAME COLUMN s_country TO s_state;
   DESC CSE;
@@ -65,7 +63,7 @@ This document contains a structured log of SQL queries practiced over multiple d
   
   SELECT s_id, s_name FROM CSE WHERE s_id = 1002;
 
-  Transaction Handling
+
 
   CREATE DATABASE Practice1;
   USE Practice1;
@@ -94,7 +92,6 @@ This document contains a structured log of SQL queries practiced over multiple d
 
 # 1-Feb-2025 --> Day 5 :SQL Datatypes, Operators, Where Clause 
 
- Table Creation & Queries
   CREATE DATABASE ORG123;
   SHOW DATABASES;
   USE ORG123;
@@ -121,7 +118,8 @@ This document contains a structured log of SQL queries practiced over multiple d
   SELECT * FROM Worker WHERE SALARY NOT BETWEEN 1000000 AND 200000;
   SELECT FIRST_NAME FROM Worker WHERE WORKER_ID IN (2, 4);
 
-Aggregate Functions
+
+
   SELECT MIN(SALARY) FROM Worker;
   SELECT MAX(SALARY) FROM Worker;
   
@@ -134,10 +132,7 @@ Aggregate Functions
   SELECT SUM(SALARY) FROM Worker;
 
 
-
-
 # 2-Feb-2025 --> Day 6 : Order By, Group By and alias name and distinct 
-
 
   USE ORG123;
   SELECT DISTINCT(DEPARTMENT) FROM Worker;
@@ -164,7 +159,7 @@ Aggregate Functions
       END AS People_Stage
   FROM Worker;
 
-Grouping and Sorting
+
   SELECT * FROM Worker WHERE DEPARTMENT = 'Admin' ORDER BY SALARY;
   SELECT * FROM Worker WHERE DEPARTMENT = 'Admin' ORDER BY DEPARTMENT DESC;
   SELECT * FROM Worker WHERE DEPARTMENT = 'Admin' ORDER BY DEPARTMENT DESC LIMIT 1;

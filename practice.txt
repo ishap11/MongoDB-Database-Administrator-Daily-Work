@@ -153,21 +153,305 @@ DESC LIMIT 2;
 
 # 6-Feb-2025 --> Day 8 : SQL Constraints (Unique, Not Null & Primary Key)
 
+show databases;
+
+order by-group by:
+
+show databases;
+
+use practise;
+
+select * from worker where department = 'Admin' order by department desc;
+
+select * from worker where department = 'Admin' order by department desc limit 3;
+
+select department, count(DEPARTMENT) as total_employees  from worker 
+where department = 'HR' or DEPARTMENT='account' group by department;
+
+select department, count(department) as total_employees from worker
+group by department
+order by total_employees desc Limit 2;
+
+(
+  SELECT department, COUNT(department) AS total_employees
+  FROM worker
+  GROUP BY department
+  ORDER BY total_employees ASC
+  LIMIT 1
+)
+
+UNION ALL
+
+(
+  SELECT department, COUNT(department) AS total_employees
+  FROM worker
+  GROUP BY department
+  ORDER BY total_employees DESC
+  LIMIT 1
+);
+
+
+3. Not Null-Primary key:
+
+use practise;
+
+create table Persons (
+	ID int PRIMARY KEY not null,
+    first_name varchar(255) not null,
+    last_name varchar(255) not null,
+    Unique(ID)
+);
+
+desc persons;
 
 
 # 7-Feb-2025--> Day 9 : Foreign Key and Mapping concepts
 
+use practise;
+
+create table category(
+c_id int primary key,
+c_name varchar(25) not null unique,
+c_decrp varchar(250) not null
+);
+
+insert into category values (101, 'electronics', 'it stores all set of electronics items');
+select * from category;
+desc category;
+
+CREATE TABLE Products (
+    P_ID int primary key,
+    p_Name varchar(250) NOT NULL,
+    c_id int ,
+    CONSTRAINT c_id FOREIGN KEY (c_id)
+    REFERENCES category(c_id) on delete cascade
+);
+
+desc produsts ;
+
+CREATE TABLE Products (
+    P_ID int primary key,
+    p_Name varchar(250) NOT NULL,
+    c_id int ,
+    CONSTRAINT c_id FOREIGN KEY (c_id)
+    REFERENCES category(c_id) on delete cascade
+);
+
+insert into products values (904, 'INTEL I5 Processor', 101);
+select * from products;
+
+delete from category where c_id=101;
+select * from category;
+
 
 # 8-Feb-2025 -->Day 10 : On delete cascade and on update cascade 
+
+CREATE TABLE Enorll (
+    sno INT,
+    cno INT,
+    jdate date,
+    PRIMARY KEY(sno , cno),
+    FOREIGN KEY(sno),
+        REFERENCES Stdudent(sno)
+        ON DELETE CASCADE
+    FOREIGN KEY(cno)
+        REFERENCES Course(cno)
+        ON DELETE CASCADE
+);
+INSERT INT0 Enroll(sno , cno, jdate) values(1 , 101 ,'5-jun-2021'),(2 , 102 ,'6-jun-2021'),(3 , 103 ,7-jun-2021'),(5 , 105 ,'8-jun-2021');
+
+Insert into Enroll(sno , cno , jdate)
+values (1 , 101 , "2021/05.05");
+select* from enroll;
+desc enroll;
+
+use practise;
+
+create table category(
+c_id int primary key,
+c_name varchar(25) not null unique,
+c_decrp varchar(250) not null
+);
+
+insert into category values (101, 'electronics', 'it stores all set of electronics items');
+select * from category;
+desc category;
+
+CREATE TABLE Products (
+    P_ID int primary key,
+    p_Name varchar(250) NOT NULL,
+    c_id int ,
+    CONSTRAINT c_id FOREIGN KEY (c_id)
+    REFERENCES category(c_id) on delete cascade
+);
+
+insert into products values (904, 'INTEL I5 Processor', 101);
+select * from products;
+
+delete from category where c_id=101;
+select * from category;
+
+select * from worker;
+
+CREATE TABLE Bonus (
+	WORKER_REF_ID INT,
+	BONUS_AMOUNT INT(10),
+	BONUS_DATE DATETIME,
+	FOREIGN KEY (WORKER_REF_ID)
+		REFERENCES Worker(WORKER_ID)
+        ON DELETE CASCADE
+);
+
+INSERT INTO Bonus 
+	(WORKER_REF_ID, BONUS_AMOUNT, BONUS_DATE) VALUES
+		(001, 5000, '16-02-20'),
+		(002, 3000, '16-06-11'),
+		(003, 4000, '16-02-20'),
+		(001, 4500, '16-02-20'),
+		(002, 3500, '16-06-11');
+        
+SELECT department, COUNT(*) AS department_count
+FROM worker
+GROUP BY department
+ORDER BY department_count DESC
+LIMIT 1 OFFSET 1;
+
+(SELECT * FROM Worker ORDER BY worker_ID DESC LIMIT 5)
+ORDER BY worker_ID ASC;
+
+desc worker;
+
+CREATE TABLE Title (
+	WORKER_REF_ID INT,
+	WORKER_TITLE CHAR(25),
+	AFFECTED_FROM DATETIME,
+	FOREIGN KEY (WORKER_REF_ID)
+		REFERENCES Worker(WORKER_ID)
+        ON DELETE CASCADE
+);
+
+
+INSERT INTO Title (WORKER_REF_ID, WORKER_TITLE, AFFECTED_FROM) 
+VALUES
+ (1, 'Manager', '2016-02-20 00:00:00'),
+ (2, 'Executive', '2016-06-11 00:00:00'),
+ (8, 'Executive', '2016-06-11 00:00:00'),
+ (5, 'Manager', '2016-06-11 00:00:00'),
+ (4, 'Asst. Manager', '2016-06-11 00:00:00'),
+ (7, 'Executive', '2016-06-11 00:00:00'),
+ (6, 'Lead', '2016-06-11 00:00:00'),
+ (3, 'Lead', '2016-06-11 00:00:00');
 
 
 # 9-Feb-2025--> Day 11 : Check, Default constraints and like operator and view statements
 
+CREATE TABKE Persons (
+    ID int NOT NULL;
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CHECK (Age >=18)
+);
+
+CREATE TABKE Persons (
+    ID int NOT NULL;
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CHECK (salary >=200000 and salary <=400000)
+);
+
+ALTER TABLE Persons
+ADD CHECK (Age >=18);
+
+CREATE TABKE Persons1(
+    ID int NOT NULL;
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    city varchar(255) DEFAULT 'coimbatore'
+);
+desc persons1;
+
+use org123;
+show tables from org123;
+
+select * from worker ;
+select * from worker where s_name LIKE '8%';
+
+create  view [admin_more_salary] as
+select * from worker where departs = "Admin" and salary >= 1000000 order by salary desc;
+
+select * from admin_more_salary;
+
 
 # 10-Feb-2025--> Day12 : Having clause and sub query concepts
 
+use org123;
+select s_department , count(department) from worker where department in ('admin' , 'accoount') group by department;
+
+SELECT COUNT(CustomerID) as highest_head_count
+FROM worker
+GROUP BY department 
+HAVING COUNT(department) >= 3;
+
+SELECT departments, COUNT(*) as department_count
+FROM worker
+GROUp BY department
+Order by department_count DESC
+LIMIT 1 OFFSET 1;
+
+create table vitBhopal (id int primary key , ame varchar(20) not nulll , department varchar(25) not null);
+insert into vitBhopal values (104 , 'Karthik' , 'cs') , (103 , 'Arin' , 'ece');
+
+create table vit (id int primary key , ame varchar(20) not nulll , college varchar(25) not null);
+insert into vit values (104 , 'Karthik' , 'chennai') , (103 , 'Arin' , 'bhopal');
+select * from vit;
+select * from vitBhopal;
+
+select name as winnerOfTheYear from vitBhopal 
+where id = (select id form vit where college = 'Bhopal');
+
 
 # 11-Feb-2025--> Day 13 : SQL Joins (Inner, Outer, Cross and Natural)
+insert into vitbhopal values (104 , 'Karthik', 'cs') , (103 , 'Arun' , 'cs');
+
+create table vit (id int primary key , name varchar(20) not null , college varchar(25) not null );
+insert into vit values (104 , 'Karthik' , 'chennai'), (103 , 'Arun' , 'Bhopal');
+
+select * from vit;
+
+select name as WinnerOfTheYear frm vitbhopal
+where id = (select id from vit where college='bhopal');
+
+use org;
+create table student(
+    s_id int primary key,
+    s_name varchar(25) not null,
+    s_department varchar(25) not null
+);
+
+insert into student values (1001 , "Jayanth" , "ECE"),(1002 , "praveen" , "CSE") , (1003 , "Lokesh" , "Mech") , (1006 , "karthik" , "Aero"),(1007 , "Mahesh" , "CSE");
+
+select * from student;
+drop table vit;
+create table VIT(
+    s_id int primary key,
+    s_cgpa varchar(5) not null
+);
+insert into vit values (1001 , '7.2') ,(1002 , '8.6') , (1007 , '9.25');
+select * from vit;
+use org123;
+
+select  * from stident create join vit;
+
+select * from student INNER JOIN vit where student.s_id = vit.s_id;
+
+select * from student NATURALJOIN vit where student.s_id = vit.s_id;
+
+select * from student LEFT OUTER JOIN vit on (student.s_id = vit.s_id);
+
+select * from student FULL OUTER JOIN vit on (student.s_id = vit.s_id);
 
 
 #12-Feb-2025-->Day 14 : Software installation and task submission

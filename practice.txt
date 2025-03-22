@@ -414,6 +414,7 @@ where id = (select id form vit where college = 'Bhopal');
 
 
 # 11-Feb-2025--> Day 13 : SQL Joins (Inner, Outer, Cross and Natural)
+
 insert into vitbhopal values (104 , 'Karthik', 'cs') , (103 , 'Arun' , 'cs');
 
 create table vit (id int primary key , name varchar(20) not null , college varchar(25) not null );
@@ -455,3 +456,105 @@ select * from student FULL OUTER JOIN vit on (student.s_id = vit.s_id);
 
 
 #12-Feb-2025-->Day 14 : Software installation and task submission
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 19-Feb-2025--> Day 20 : Basic syntax, JSON & BSON format
+show databases
+admin   40.00 KiB
+config  12.00 KiB
+local   72.00 KiB
+use admin
+switched to db admin
+use vit
+switched to db vit
+show databases
+admin   40.00 KiB
+config  60.00 KiB
+local   72.00 KiB
+
+
+#20-Feb-2025 , 21-Feb-2025 , 22-Feb-2025 --> Session cancelled due to adVITya fest at college	
+
+
+# 24-Feb-2025--> Day 21 :MongoDB create, drop and find methods
+
+show databases
+admin   40.00 KiB
+config  48.00 KiB
+local   72.00 KiB
+use vit
+already on db vit
+db
+vit
+db.dropDatabase()
+{ ok: 1, dropped: 'vit' }
+db
+vit
+use vit
+already on db vit
+use monday
+switched to db monday
+db.createCollection("Student")
+{ ok: 1 }
+show collections
+Student
+db.createCollection("Results")
+{ ok: 1 }
+show collections
+Results
+Student
+db.Results.drop()
+true
+show automationNotices
+null
+show collections
+Student
+db.Student.insertOne({name : 'Isha' , location : 'Agra'})
+{
+  acknowledged: true,
+  insertedId: ObjectId('67ddb69a114b3dd6162ae8ee')
+}
+db.Student.insertOne({name : 'barkha&Rishabh' , location : 'Agra'})
+{
+  acknowledged: true,
+  insertedId: ObjectId('67ddb6fa114b3dd6162ae8ef')
+}
+db.Student.find()
+{
+  _id: ObjectId('67ddb69a114b3dd6162ae8ee'),
+  name: 'Isha',
+  location: 'Agra'
+}
+{
+  _id: ObjectId('67ddb6fa114b3dd6162ae8ef'),
+  name: 'barkha&Rishabh',
+  location: 'Agra'
+}
+db.Student.deleteOne({name : 'Isha'})
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.Student.find()
+{
+  _id: ObjectId('67ddb6fa114b3dd6162ae8ef'),
+  name: 'barkha&Rishabh',
+  location: 'Agra'
+}
+monday
+
+
+# 25-Feb-2025--> Day 22 : Mongodb data types, InsertOne & InsertMany and Update functions
+

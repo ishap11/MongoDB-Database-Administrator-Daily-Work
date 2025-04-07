@@ -3539,6 +3539,1402 @@ vit
 
 ## 17-March-2025--> Day 29: Sorting & Limiting  ##
 
+use vit
+switched to db vit
+db.products.insertMany([
+    { "_id" : 1, "name" : "xPhone", "price" : 799, "releaseDate": ISODate("2011-05-14"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 },"color":["white","black"],"storage":[64,128,256]},
+    { "_id" : 2, "name" : "xTablet", "price" : 899, "releaseDate": ISODate("2011-09-01") , "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 },"color":["white","black","purple"],"storage":[128,256,512]},
+    { "_id" : 3, "name" : "SmartTablet", "price" : 899, "releaseDate": ISODate("2015-01-14"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 },"color":["blue"],"storage":[16,64,128]},
+    { "_id" : 4, "name" : "SmartPad", "price" : 699, "releaseDate": ISODate("2020-05-14"),"spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256,1024]},
+    { "_id" : 5, "name" : "SmartPhone", "price" : 599,"releaseDate": ISODate("2022-09-14"), "spec" : { "ram" : 4, "screen" : 5.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256]}
+ ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5
+  }
+}
+db.products.find()
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    64,
+    128,
+    256
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 16,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 5.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ]
+}
+db.products.updateOne({_id:1},{$inc:{price:50}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.products.find()
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 849,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    64,
+    128,
+    256
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 16,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 5.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ]
+}
+db.products.updateOne({_id:1},{$inc:{price:-150}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.products.find()
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 699,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    64,
+    128,
+    256
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 16,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 5.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ]
+}
+vi
+
+
+
+db.products.insertMany([
+    { "_id" : 1, "name" : "xPhone", "price" : 799, "releaseDate": ISODate("2011-05-14"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 },"color":["white","black"],"storage":[64,128,256]},
+    { "_id" : 2, "name" : "xTablet", "price" : 899, "releaseDate": ISODate("2011-09-01") , "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 },"color":["white","black","purple"],"storage":[128,256,512]},
+    { "_id" : 3, "name" : "SmartTablet", "price" : 899, "releaseDate": ISODate("2015-01-14"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 },"color":["blue"],"storage":[16,64,128]},
+    { "_id" : 4, "name" : "SmartPad", "price" : 699, "releaseDate": ISODate("2020-05-14"),"spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256,1024]},
+    { "_id" : 5, "name" : "SmartPhone", "price" : 599,"releaseDate": ISODate("2022-09-14"), "spec" : { "ram" : 4, "screen" : 5.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256]}
+ ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5
+  }
+}
+db.products.updateOne({_id:5},{$min:{price:699}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+db.products.find()
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    64,
+    128,
+    256
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 16,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 5.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ]
+}
+db.products.updateOne({_id:5},{$min:{price:499}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.products.find()
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    64,
+    128,
+    256
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 16,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 499,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 5.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ]
+}
+db.products.updateOne({_id:1},{$max:{price:699}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+db.products.find()
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    64,
+    128,
+    256
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 16,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 499,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 5.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ]
+}
+vit
+
+
+
+db.products.insertMany([
+    { "_id" : 1, "name" : "xPhone", "price" : 799, "releaseDate": ISODate("2011-05-14"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 },"color":["white","black"],"storage":[64,128,256]},
+    { "_id" : 2, "name" : "xTablet", "price" : 899, "releaseDate": ISODate("2011-09-01") , "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 },"color":["white","black","purple"],"storage":[128,256,512]},
+    { "_id" : 3, "name" : "SmartTablet", "price" : 899, "releaseDate": ISODate("2015-01-14"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 },"color":["blue"],"storage":[16,64,128]},
+    { "_id" : 4, "name" : "SmartPad", "price" : 699, "releaseDate": ISODate("2020-05-14"),"spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256,1024]},
+    { "_id" : 5, "name" : "SmartPhone", "price" : 599,"releaseDate": ISODate("2022-09-14"), "spec" : { "ram" : 4, "screen" : 5.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256]}
+ ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5
+  }
+}
+db.products.updateOne({_id:5},{$mul:{price:1.1}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.products.find()
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    64,
+    128,
+    256
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 16,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 658.9000000000001,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 5.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ]
+}
+db.products.updateOne({
+_id:1
+},{
+$mul:{
+"storage.0":2,
+"storage.1":2,
+"storage.3":2
+}
+})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.product.find()
+db.products.find()
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    128,
+    256,
+    256,
+    0
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 16,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 658.9000000000001,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 5.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ]
+}
+db.products.updateMany({},{$mul: {"spec.ram":2}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 5,
+  upsertedCount: 0
+}
+db.products.find()
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    128,
+    256,
+    256,
+    0
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 32,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 24,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    ram: 16,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 658.9000000000001,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    screen: 5.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ]
+}
+vit
+
+
+
+db.products.insertMany([
+    { "_id" : 1, "name" : "xPhone", "price" : 799, "releaseDate": ISODate("2011-05-14"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 },"color":["white","black"],"storage":[64,128,256]},
+    { "_id" : 2, "name" : "xTablet", "price" : 899, "releaseDate": ISODate("2011-09-01") , "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 },"color":["white","black","purple"],"storage":[128,256,512]},
+    { "_id" : 3, "name" : "SmartTablet", "price" : 899, "releaseDate": ISODate("2015-01-14"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 },"color":["blue"],"storage":[16,64,128]},
+    { "_id" : 4, "name" : "SmartPad", "price" : 699, "releaseDate": ISODate("2020-05-14"),"spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256,1024]},
+    { "_id" : 5, "name" : "SmartPhone", "price" : 599,"releaseDate": ISODate("2022-09-14"), "spec" : { "ram" : 4, "screen" : 5.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256]}
+ ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5
+  }
+}
+db.products.updateMany({},{$unset:{"spec.ram":""}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 5,
+  upsertedCount: 0
+}
+db.products.find()
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    64,
+    128,
+    256
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+   storage: [
+    16,
+    64,
+    128
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    screen: 5.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ]
+}
+db.products.updateMany({}, { $unset: { "storage.0": "" } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 5,
+  upsertedCount: 0
+}
+db.products.find()
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    null,
+    128,
+    256
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    null,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    null,
+    64,
+    128
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    null,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    screen: 5.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    null,
+    256
+  ]
+}
+db.products.updateMany({}, {
+    $unset: {
+        releaseDate: "",
+        spec: ""
+    }
+})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 5,
+  upsertedCount: 0
+}
+db.products.find()
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    null,
+    128,
+    256
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    null,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  color: [
+    'blue'
+  ],
+  storage: [
+    null,
+    64,
+    128
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    null,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    null,
+    256
+  ]
+}
+vit
+
 
 ------------------------------------------------------------------------------------------------------------
 
@@ -3551,11 +4947,1230 @@ vit
 
 ## 19-March-2025--> Day 30 : Updating Documents ##
 
+use vit
+switched to db vit
+db.products.drop()
+true
+db.products.insertMany([
+    { "_id" : 1, "name" : "xPhone", "price" : 799, "releaseDate": ISODate("2011-05-14"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 },"color":["white","black"],"storage":[64,128,256]},
+    { "_id" : 2, "name" : "xTablet", "price" : 899, "releaseDate": ISODate("2011-09-01") , "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 },"color":["white","black","purple"],"storage":[128,256,512]},
+    { "_id" : 3, "name" : "SmartTablet", "price" : 899, "releaseDate": ISODate("2015-01-14"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 },"color":["blue"],"storage":[16,64,128]},
+    { "_id" : 4, "name" : "SmartPad", "price" : 699, "releaseDate": ISODate("2020-05-14"),"spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256,1024]},
+    { "_id" : 5, "name" : "SmartPhone", "price" : 599,"releaseDate": ISODate("2022-09-14"), "spec" : { "ram" : 4, "screen" : 5.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256]}
+ ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5
+  }
+}
+db.products.updateOne({_id:1},{$unset:{price:""}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.products.find()
+{
+  _id: 1,
+  name: 'xPhone',
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    64,
+    128,
+    256
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 16,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 5.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ]
+}
+vit
+
+
+
+db.products.insertMany([
+    { "_id" : 1, "nmea" : "xPhone", "price" : 799, "releaseDate": ISODate("2011-05-14"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 },"color":["white","black"],"storage":[64,128,256]},
+    { "_id" : 2, "nmea" : "xTablet", "price" : 899, "releaseDate": ISODate("2011-09-01") , "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 },"color":["white","black","purple"],"storage":[128,256,512]},
+    { "_id" : 3, "nmea" : "SmartTablet", "price" : 899, "releaseDate": ISODate("2015-01-14"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 },"color":["blue"],"storage":[16,64,128]},
+    { "_id" : 4, "nmea" : "SmartPad", "price" : 699, "releaseDate": ISODate("2020-05-14"),"spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256,1024]},
+    { "_id" : 5, "nmea" : "SmartPhone", "price" : 599,"releaseDate": ISODate("2022-09-14"), "spec" : { "ram" : 4, "screen" : 5.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256]}
+ ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5
+  }
+}
+db.products.updateMany({},{$rename:(nmea:name})
+SyntaxError: Unexpected token, expected "," (1:40)
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m db[33m.[39mproducts[33m.[39mupdateMany({}[33m,[39m{$rename[33m:[39m(nmea[33m:[39mname})
+ [90m   |[39m                                         [31m[1m^[22m[39m
+ [90m 2 |[39m[0m
+db.products.updateMany({},{$rename:{nmea:name}})
+ReferenceError: name is not defined
+db.products.updateMany({},{$rename:{nmea:"name"})
+SyntaxError: Unexpected token, expected "," (1:48)
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m db[33m.[39mproducts[33m.[39mupdateMany({}[33m,[39m{$rename[33m:[39m{nmea[33m:[39m[32m"name"[39m})
+ [90m   |[39m                                                 [31m[1m^[22m[39m
+ [90m 2 |[39m[0m
+db.products.updateMany({},{$rename:{nmea:"name"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 5,
+  upsertedCount: 0
+}
+db.products.find()
+{
+  _id: 1,
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    64,
+    128,
+    256
+  ],
+  name: 'xPhone'
+}
+{
+  _id: 2,
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 16,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ],
+  name: 'xTablet'
+}
+{
+  _id: 3,
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ],
+  name: 'SmartTablet'
+}
+{
+  _id: 4,
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ],
+  name: 'SmartPad'
+}
+{
+  _id: 5,
+  price: 599,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 5.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ],
+  name: 'SmartPhone'
+}
+db.products.updateMany({}, { $rename: { "spec.screen": "spec.screen_size" } });
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 5,
+  upsertedCount: 0
+}
+db.products.find()
+{
+  _id: 1,
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    cpu: 2.66,
+    screen_size: 6.5
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    64,
+    128,
+    256
+  ],
+  name: 'xPhone'
+}
+{
+  _id: 2,
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 16,
+    cpu: 3.66,
+    screen_size: 9.5
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ],
+  name: 'xTablet'
+}
+{
+  _id: 3,
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    cpu: 3.66,
+    screen_size: 9.7
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ],
+  name: 'SmartTablet'
+}
+{
+  _id: 4,
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    cpu: 1.66,
+    screen_size: 9.7
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ],
+  name: 'SmartPad'
+}
+{
+  _id: 5,
+  price: 599,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    cpu: 1.66,
+    screen_size: 5.7
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ],
+  name: 'SmartPhone'
+}
+db.products.updateMany({},{ $rename: { "spec": "cpu" }});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 5,
+  upsertedCount: 0
+}
+db.products.find()
+{
+  _id: 1,
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    64,
+    128,
+    256
+  ],
+  name: 'xPhone',
+  cpu: {
+    ram: 4,
+    cpu: 2.66,
+    screen_size: 6.5
+  }
+}
+{
+  _id: 2,
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ],
+  name: 'xTablet',
+  cpu: {
+    ram: 16,
+    cpu: 3.66,
+    screen_size: 9.5
+  }
+}
+{
+  _id: 3,
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ],
+  name: 'SmartTablet',
+  cpu: {
+    ram: 12,
+    cpu: 3.66,
+    screen_size: 9.7
+  }
+}
+{
+  _id: 4,
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ],
+  name: 'SmartPad',
+  cpu: {
+    ram: 8,
+    cpu: 1.66,
+    screen_size: 9.7
+  }
+}
+{
+  _id: 5,
+  price: 599,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ],
+  name: 'SmartPhone',
+  cpu: {
+    ram: 4,
+    cpu: 1.66,
+    screen_size: 5.7
+  }
+}
+vit
+
+
+
+
+db.products.insertMany(
+    { "_id" : 1, "nmea" : "xPhone", "price" : 799, "releaseDate": ISODate("2011-05-14"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 },"color":["white","black"],"storage":[64,128,256]},
+    { "_id" : 2, "nmea" : "xTablet", "price" : 899, "releaseDate": ISODate("2011-09-01") , "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 },"color":["white","black","purple"],"storage":[128,256,512]},
+    { "_id" : 3, "nmea" : "SmartTablet", "price" : 899, "releaseDate": ISODate("2015-01-14"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 },"color":["blue"],"storage":[16,64,128]},
+    { "_id" : 4, "nmea" : "SmartPad", "price" : 699, "releaseDate": ISODate("2020-05-14"),"spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256,1024]},
+    { "_id" : 5, "nmea" : "SmartPhone", "price" : 599,"releaseDate": ISODate("2022-09-14"), "spec" : { "ram" : 4, "screen" : 5.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256]}
+ ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5
+  }
+}
+db.products.updateMany{
+{_id:6},
+($set:{price:999}}
+)
+SyntaxError: Missing semicolon. (1:22)
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m db[33m.[39mproducts[33m.[39mupdateMany{
+ [90m   |[39m                       [31m[1m^[22m[39m
+ [90m 2 |[39m {_id[33m:[39m[35m6[39m}[33m,[39m
+ [90m 3 |[39m ($set[33m:[39m{price[33m:[39m[35m999[39m}}
+ [90m 4 |[39m )[0m
+db.products.updateMany(
+{_id:6},
+($set:{price:999}}
+)
+SyntaxError: Unexpected token, expected "," (3:5)
+
+[0m [90m 1 |[39m db[33m.[39mproducts[33m.[39mupdateMany(
+ [90m 2 |[39m {_id[33m:[39m[35m6[39m}[33m,[39m
+[31m[1m>[22m[39m[90m 3 |[39m ($set[33m:[39m{price[33m:[39m[35m999[39m}}
+ [90m   |[39m      [31m[1m^[22m[39m
+ [90m 4 |[39m )
+ [90m 5 |[39m[0m
+db.products.updateMany(
+{_id:6},
+{$set:{price:999}}
+)
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+db.products.updateMany(
+{_id:6},
+{$set:{price:999}},
+{upsert: true}
+)
+{
+  acknowledged: true,
+  insertedId: 6,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 1
+}
+db.products.find()
+{
+  _id: 1,
+  nmea: 'xPhone',
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    64,
+    128,
+    256
+  ]
+}
+{
+  _id: 2,
+  nmea: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 16,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  nmea: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+{
+  _id: 4,
+  nmea: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  nmea: 'SmartPhone',
+  price: 599,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 5.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ]
+}
+{
+  _id: 6,
+  price: 999
+}
+db.products.deleteOne({ _id: 6 });
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.products.deleteMany({ _id: { $in: [2, 4] } });
+{
+  acknowledged: true,
+  deletedCount: 2
+}
+db.products.deleteOne()
+MongoshInvalidInputError: [COMMON-10001] Missing required argument at position 0 (Collection.deleteOne)
+db.products.deleteOne({})
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.products.deleteMany({})
+{
+  acknowledged: true,
+  deletedCount: 2
+}
+vit
+
 
 ------------------------------------------------------------------------------------------------------------
 
 
 ## 20-March-2025--> Day 31 : Deleting Documents & Aggregation  ##
+
+use vit
+switched to db vit
+db.sales.insertMany([
+	{ "_id" : 1, "item" : "Americanos", "price" : 5, "size": "Short", "quantity" : 22, "date" : ISODate("2022-01-15T08:00:00Z") },
+	{ "_id" : 2, "item" : "Cappuccino", "price" : 6, "size": "Short","quantity" : 12, "date" : ISODate("2022-01-16T09:00:00Z") },
+	{ "_id" : 3, "item" : "Lattes", "price" : 15, "size": "Grande","quantity" : 25, "date" : ISODate("2022-01-16T09:05:00Z") },
+	{ "_id" : 4, "item" : "Mochas", "price" : 25,"size": "Tall", "quantity" : 11, "date" : ISODate("2022-02-17T08:00:00Z") },
+	{ "_id" : 5, "item" : "Americanos", "price" : 10, "size": "Grande","quantity" : 12, "date" : ISODate("2022-02-18T21:06:00Z") },
+	{ "_id" : 6, "item" : "Cappuccino", "price" : 7, "size": "Tall","quantity" : 20, "date" : ISODate("2022-02-20T10:07:00Z") },
+	{ "_id" : 7, "item" : "Lattes", "price" : 25,"size": "Tall", "quantity" : 30, "date" : ISODate("2022-02-21T10:08:00Z") },
+	{ "_id" : 8, "item" : "Americanos", "price" : 10, "size": "Grande","quantity" : 21, "date" : ISODate("2022-02-22T14:09:00Z") },
+	{ "_id" : 9, "item" : "Cappuccino", "price" : 10, "size": "Grande","quantity" : 17, "date" : ISODate("2022-02-23T14:09:00Z") },
+	{ "_id" : 10, "item" : "Americanos", "price" : 8, "size": "Tall","quantity" : 15, "date" : ISODate("2022-02-25T14:09:00Z")}
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5,
+    '5': 6,
+    '6': 7,
+    '7': 8,
+    '8': 9,
+    '9': 10
+  }
+}
+db.sales.aggregate([
+{
+$group:{
+_id: '$item',
+averageQty: {$avg: '$quantity'},
+},
+},
+]);
+{
+  _id: 'Cappuccino',
+  averageQty: 16.333333333333332
+}
+{
+  _id: 'Mochas',
+  averageQty: 11
+}
+{
+  _id: 'Lattes',
+  averageQty: 27.5
+}
+{
+  _id: 'Americanos',
+  averageQty: 17.5
+}
+db.sales.aggregate([
+{
+$group:{
+_id: '$item',
+averageAmount: {$avg:{$multiply:['$quantity', '$price']}},
+},
+},
+{$sort:{averageAmount:1}},
+]);
+{
+  _id: 'Cappuccino',
+  averageAmount: 127.33333333333333
+}
+{
+  _id: 'Americanos',
+  averageAmount: 140
+}
+{
+  _id: 'Mochas',
+  averageAmount: 275
+}
+{
+  _id: 'Lattes',
+  averageAmount: 562.5
+}
+db.sales.aggregate([
+  {
+    $group: {
+      _id: '$item',
+      averageAmount: { $avg: { $multiply: ['$quantity', '$price'] } },
+    },
+  },
+ {$match: { averageAmount; {$gt: 15} } },
+  { $sort: { averageAmount: 1 } },
+])
+
+SyntaxError: Unexpected token, expected "," (8:25)
+
+[0m [90m  6 |[39m     }[33m,[39m
+ [90m  7 |[39m   }[33m,[39m
+[31m[1m>[22m[39m[90m  8 |[39m  {$match[33m:[39m { averageAmount[33m;[39m {$gt[33m:[39m [35m15[39m} } }[33m,[39m
+ [90m    |[39m                          [31m[1m^[22m[39m
+ [90m  9 |[39m   { $sort[33m:[39m { averageAmount[33m:[39m [35m1[39m } }[33m,[39m
+ [90m 10 |[39m ])
+ [90m 11 |[39m[0m
+db.sales.aggregate([
+  {
+    $group: {
+      _id: '$item',
+      averageAmount: { $avg: { $multiply: ['$quantity', '$price'] } },
+    },
+  },
+ {$match: { averageAmount; {$gt: 15} } },
+  { $sort: { averageAmount: 1 } },
+]);
+SyntaxError: Unexpected token, expected "," (8:25)
+
+[0m [90m  6 |[39m     }[33m,[39m
+ [90m  7 |[39m   }[33m,[39m
+[31m[1m>[22m[39m[90m  8 |[39m  {$match[33m:[39m { averageAmount[33m;[39m {$gt[33m:[39m [35m15[39m} } }[33m,[39m
+ [90m    |[39m                          [31m[1m^[22m[39m
+ [90m  9 |[39m   { $sort[33m:[39m { averageAmount[33m:[39m [35m1[39m } }[33m,[39m
+ [90m 10 |[39m ])[33m;[39m
+ [90m 11 |[39m[0m
+db.sales.aggregate([
+  {
+    $group: {
+      _id: '$item',
+      averageAmount: { $avg: { $multiply: ['$quantity', '$price'] } },
+    },
+  },
+ {$match: { averageAmount: {$gt: 15} } },
+  { $sort: { averageAmount: 1 } },
+]);
+{
+  _id: 'Cappuccino',
+  averageAmount: 127.33333333333333
+}
+{
+  _id: 'Americanos',
+  averageAmount: 140
+}
+{
+  _id: 'Mochas',
+  averageAmount: 275
+}
+{
+  _id: 'Lattes',
+  averageAmount: 562.5
+}
+db.sales.aggregate([
+  {
+    $group: {
+      _id: "$item",
+      itemcount: { $count: {} },
+      price: { $avg: "$price" }
+    }
+  },
+]);
+{
+  _id: 'Lattes',
+  itemcount: 2,
+  price: 20
+}
+{
+  _id: 'Americanos',
+  itemcount: 4,
+  price: 8.25
+}
+{
+  _id: 'Cappuccino',
+  itemcount: 3,
+  price: 7.666666666666667
+}
+{
+  _id: 'Mochas',
+  itemcount: 1,
+  price: 25
+}
+db.sales.aggregate([
+  {
+    $group: {
+      _id: "$item",
+      itemcount: { $count: {} },
+    }
+  },
+]);
+{
+  _id: 'Cappuccino',
+  itemcount: 3
+}
+{
+  _id: 'Mochas',
+  itemcount: 1
+}
+{
+  _id: 'Lattes',
+  itemcount: 2
+}
+{
+  _id: 'Americanos',
+  itemcount: 4
+}
+db.sales.aggregate([
+  {
+    $group: {
+      _id: "$item",
+      itemcount: { $count: {} },
+      { $match: { count: { $lt: 3 } } },
+    }
+  },
+]);
+SyntaxError: Unexpected token (6:6)
+
+[0m [90m 4 |[39m       _id[33m:[39m [32m"$item"[39m[33m,[39m
+ [90m 5 |[39m       itemcount[33m:[39m { $count[33m:[39m {} }[33m,[39m
+[31m[1m>[22m[39m[90m 6 |[39m       { $match[33m:[39m { count[33m:[39m { $lt[33m:[39m [35m3[39m } } }[33m,[39m
+ [90m   |[39m       [31m[1m^[22m[39m
+ [90m 7 |[39m     }
+ [90m 8 |[39m   }[33m,[39m
+ [90m 9 |[39m ])[33m;[39m[0m
+db.sales.aggregate([
+  {
+    $group: {
+      _id: "$item",
+      itemcount: { $count: {} },
+      { $match: { $count: { $lt: 3 } } },
+    }
+  },
+]);
+SyntaxError: Unexpected token (6:6)
+
+[0m [90m 4 |[39m       _id[33m:[39m [32m"$item"[39m[33m,[39m
+ [90m 5 |[39m       itemcount[33m:[39m { $count[33m:[39m {} }[33m,[39m
+[31m[1m>[22m[39m[90m 6 |[39m       { $match[33m:[39m { $count[33m:[39m { $lt[33m:[39m [35m3[39m } } }[33m,[39m
+ [90m   |[39m       [31m[1m^[22m[39m
+ [90m 7 |[39m     }
+ [90m 8 |[39m   }[33m,[39m
+ [90m 9 |[39m ])[33m;[39m[0m
+db.sales.aggregate([
+  {
+    $group: {
+      _id: "$item",
+      itemcount: { count: {} },
+      { $match: { count: { $lt: 3 } } },
+    }
+  },
+]);
+SyntaxError: Unexpected token (6:6)
+
+[0m [90m 4 |[39m       _id[33m:[39m [32m"$item"[39m[33m,[39m
+ [90m 5 |[39m       itemcount[33m:[39m { count[33m:[39m {} }[33m,[39m
+[31m[1m>[22m[39m[90m 6 |[39m       { $match[33m:[39m { count[33m:[39m { $lt[33m:[39m [35m3[39m } } }[33m,[39m
+ [90m   |[39m       [31m[1m^[22m[39m
+ [90m 7 |[39m     }
+ [90m 8 |[39m   }[33m,[39m
+ [90m 9 |[39m ])[33m;[39m[0m
+db.sales.aggregate([
+  { $group: { _id: "$item", count: { $sum: 1 } } },
+  { $match: { count: { $lt: 3 } } },
+]);
+{
+  _id: 'Lattes',
+  count: 2
+}
+{
+  _id: 'Mochas',
+  count: 1
+}
+db.sales.aggregate([
+  {
+    $group: {
+      _id: null,
+      totalQty: { $sum: '$quantity' },
+    },
+  },
+]);
+{
+  _id: null,
+  totalQty: 185
+}
+db.sales.aggregate([
+  {
+    $group: {
+      _id: '$item',
+      totalQty: { $sum: '$quantity' },
+    },
+  },
+]);
+{
+  _id: 'Lattes',
+  totalQty: 55
+}
+{
+  _id: 'Mochas',
+  totalQty: 11
+}
+{
+  _id: 'Cappuccino',
+  totalQty: 49
+}
+{
+  _id: 'Americanos',
+  totalQty: 70
+}
+db.sales.aggregate([
+  {
+    $group: {
+      _id: '$item',
+      totalQty: { $sum: '$quantity' },
+    },
+  },
+  { $match: { totalQty: { $gt: 50 } } },
+  { $sort: { totalQty: -1 } },
+]);
+{
+  _id: 'Americanos',
+  totalQty: 70
+}
+{
+  _id: 'Lattes',
+  totalQty: 55
+}
+db.sales.aggregate([
+  {
+    $group: {
+      _id: '$size',
+      totalAmount: { $sum: { $multiply: ['$price', '$quantity'] } },
+    },
+  },
+  { $sort: { totalAmount: -1 } },
+]);
+{
+  _id: 'Tall',
+  totalAmount: 1285
+}
+{
+  _id: 'Grande',
+  totalAmount: 875
+}
+{
+  _id: 'Short',
+  totalAmount: 182
+}
+db.sales.aggregate([
+  {
+    $group: {
+      _id: '$item',
+      maxQty: { $max: '$quantity' },
+    },
+  },
+]);
+{
+  _id: 'Lattes',
+  maxQty: 30
+}
+{
+  _id: 'Americanos',
+  maxQty: 22
+}
+{
+  _id: 'Cappuccino',
+  maxQty: 20
+}
+{
+  _id: 'Mochas',
+  maxQty: 11
+}
+db.sales.aggregate([
+  {
+    $group: {
+      _id: '$item',
+      maxAmount: { $max: { $multiply: ['$price', '$quantity'] } },
+    },
+  },
+]);
+{
+  _id: 'Lattes',
+  maxAmount: 750
+}
+{
+  _id: 'Americanos',
+  maxAmount: 210
+}
+{
+  _id: 'Cappuccino',
+  maxAmount: 170
+}
+{
+  _id: 'Mochas',
+  maxAmount: 275
+}
+db.sales.aggregate([
+  {
+    $group: {
+      _id: '$item',
+      minQty: { $min: '$quantity' },
+      maxQty: { $max: 'minQty' }
+    },
+  },
+]);
+{
+  _id: 'Lattes',
+  minQty: 25,
+  maxQty: 'minQty'
+}
+{
+  _id: 'Americanos',
+  minQty: 12,
+  maxQty: 'minQty'
+}
+{
+  _id: 'Cappuccino',
+  minQty: 12,
+  maxQty: 'minQty'
+}
+{
+  _id: 'Mochas',
+  minQty: 11,
+  maxQty: 'minQty'
+}
+db.sales.aggregate([
+  {
+    $group: {
+      _id: '$item',
+      minQty: { $min: '$quantity' },
+      maxQty: { $max: '$minQty' }
+    },
+  },
+]);
+
+{
+  _id: 'Lattes',
+  minQty: 25,
+  maxQty: null
+}
+{
+  _id: 'Americanos',
+  minQty: 12,
+  maxQty: null
+}
+{
+  _id: 'Cappuccino',
+  minQty: 12,
+  maxQty: null
+}
+{
+  _id: 'Mochas',
+  minQty: 11,
+  maxQty: null
+}
+db.sales.aggregate([
+  {
+    $group: {
+      _id: '$item',
+      minQty: { $min: '$quantity' },
+    },
+  maxQty: { $max: '$minQty' }
+  },
+]);
+MongoServerError[Location40323]: A pipeline stage specification object must contain exactly one field.
+db.sales.aggregate([
+  {
+    $group: {
+      _id: '$item',
+      minQty: { $min: '$quantity' },
+    },
+{ $sort: { minQty: +1 } }
+  },
+]);
+SyntaxError: Unexpected token (7:0)
+
+[0m [90m  5 |[39m       minQty[33m:[39m { $min[33m:[39m [32m'$quantity'[39m }[33m,[39m
+ [90m  6 |[39m     }[33m,[39m
+[31m[1m>[22m[39m[90m  7 |[39m { $sort[33m:[39m { minQty[33m:[39m [33m+[39m[35m1[39m } }
+ [90m    |[39m [31m[1m^[22m[39m
+ [90m  8 |[39m   }[33m,[39m
+ [90m  9 |[39m ])[33m;[39m
+ [90m 10 |[39m[0m
+db.sales.aggregate([
+  {
+    $group: {
+      _id: '$item',
+      minQty: { $min: '$quantity' },
+    },
+  },
+{ $sort: { minQty: +1 } }
+]);
+{
+  _id: 'Mochas',
+  minQty: 11
+}
+{
+  _id: 'Cappuccino',
+  minQty: 12
+}
+{
+  _id: 'Americanos',
+  minQty: 12
+}
+{
+  _id: 'Lattes',
+  minQty: 25
+}
+db.sales.aggregate([
+  {
+    $group: {
+      _id: '$item',
+      minQty: { $min: '$quantity' },
+    },
+  },
+maxQty: { $max: '$quantity' }
+]);
+SyntaxError: Unexpected token, expected "," (8:6)
+
+[0m [90m  6 |[39m     }[33m,[39m
+ [90m  7 |[39m   }[33m,[39m
+[31m[1m>[22m[39m[90m  8 |[39m maxQty[33m:[39m { $max[33m:[39m [32m'$quantity'[39m }
+ [90m    |[39m       [31m[1m^[22m[39m
+ [90m  9 |[39m ])[33m;[39m
+ [90m 10 |[39m[0m
+vit
 
 
 ------------------------------------------------------------------------------------------------------------
@@ -3563,22 +6178,1105 @@ vit
 
 ## 21-March-2025--> Day 32 : Indexes  ##
 
+use vit
+switched to db vit
+show collections
+products
+sales
+db.sales.find()
+{
+  _id: 1,
+  item: 'Americanos',
+  price: 5,
+  size: 'Short',
+  quantity: 22,
+  date: 2022-01-15T08:00:00.000Z
+}
+{
+  _id: 2,
+  item: 'Cappuccino',
+  price: 6,
+  size: 'Short',
+  quantity: 12,
+  date: 2022-01-16T09:00:00.000Z
+}
+{
+  _id: 3,
+  item: 'Lattes',
+  price: 15,
+  size: 'Grande',
+  quantity: 25,
+  date: 2022-01-16T09:05:00.000Z
+}
+{
+  _id: 4,
+  item: 'Mochas',
+  price: 25,
+  size: 'Tall',
+  quantity: 11,
+  date: 2022-02-17T08:00:00.000Z
+}
+{
+  _id: 5,
+  item: 'Americanos',
+  price: 10,
+  size: 'Grande',
+  quantity: 12,
+  date: 2022-02-18T21:06:00.000Z
+}
+{
+  _id: 6,
+  item: 'Cappuccino',
+  price: 7,
+  size: 'Tall',
+  quantity: 20,
+  date: 2022-02-20T10:07:00.000Z
+}
+{
+  _id: 7,
+  item: 'Lattes',
+  price: 25,
+  size: 'Tall',
+  quantity: 30,
+  date: 2022-02-21T10:08:00.000Z
+}
+{
+  _id: 8,
+  item: 'Americanos',
+  price: 10,
+  size: 'Grande',
+  quantity: 21,
+  date: 2022-02-22T14:09:00.000Z
+}
+{
+  _id: 9,
+  item: 'Cappuccino',
+  price: 10,
+  size: 'Grande',
+  quantity: 17,
+  date: 2022-02-23T14:09:00.000Z
+}
+{
+  _id: 10,
+  item: 'Americanos',
+  price: 8,
+  size: 'Tall',
+  quantity: 15,
+  date: 2022-02-25T14:09:00.000Z
+}
+db.sales.getIndexes()
+[ { v: 2, key: { _id: 1 }, name: '_id_' } ]
+db.sales.createIndex({item:1})
+item_1
+db.sales.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  { v: 2, key: { item: 1 }, name: 'item_1' }
+]
+db.sales.find({item: 'Cappuccino'])
+SyntaxError: Unexpected token, expected "," (1:33)
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m db[33m.[39msales[33m.[39mfind({item[33m:[39m [32m'Cappuccino'[39m])
+ [90m   |[39m                                  [31m[1m^[22m[39m[0m
+db.sales.find({item: 'Cappuccino'})
+{
+  _id: 2,
+  item: 'Cappuccino',
+  price: 6,
+  size: 'Short',
+  quantity: 12,
+  date: 2022-01-16T09:00:00.000Z
+}
+{
+  _id: 6,
+  item: 'Cappuccino',
+  price: 7,
+  size: 'Tall',
+  quantity: 20,
+  date: 2022-02-20T10:07:00.000Z
+}
+{
+  _id: 9,
+  item: 'Cappuccino',
+  price: 10,
+  size: 'Grande',
+  quantity: 17,
+  date: 2022-02-23T14:09:00.000Z
+}
+db.sales.dropIndexes()
+{
+  nIndexesWas: 2,
+  msg: 'non-_id indexes dropped for collection',
+  ok: 1
+}
+db.sales.getIndexes()
+[ { v: 2, key: { _id: 1 }, name: '_id_' } ]
+db.sales.updateOne({ _id: 1 }, { $set: { email: "user1@example.com" } });
+db.sales.updateOne({ _id: 2 }, { $set: { email: "user2@example.com" } });
+db.sales.updateOne({ _id: 3 }, { $set: { email: "user3@example.com" } });
+db.sales.updateOne({ _id: 4 }, { $set: { email: "user4@example.com" } });
+db.sales.updateOne({ _id: 5 }, { $set: { email: "user5@example.com" } });
+db.sales.updateOne({ _id: 6 }, { $set: { email: "user6@example.com" } });
+db.sales.updateOne({ _id: 7 }, { $set: { email: "user7@example.com" } });
+db.sales.updateOne({ _id: 8 }, { $set: { email: "user8@example.com" } });
+db.sales.updateOne({ _id: 9 }, { $set: { email: "user9@example.com" } });
+db.sales.updateOne({ _id: 10 }, { $set: { email: "user10@example.com" } });
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.sales.createIndex({email;1},{unique:true})
+SyntaxError: Unexpected token, expected "," (1:27)
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m db[33m.[39msales[33m.[39mcreateIndex({email[33m;[39m[35m1[39m}[33m,[39m{unique[33m:[39m[36mtrue[39m})
+ [90m   |[39m                            [31m[1m^[22m[39m[0m
+db.sales.createIndex({email:1},{unique:true})
+email_1
+db.sales.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  { v: 2, key: { email: 1 }, name: 'email_1', unique: true }
+]
+db.persons.insertMany([
+    { _id: 1, name: "John Doe", email: "johndoe@example.com", phone: "9876543210" },
+    { _id: 2, name: "Jane Smith", email: "janesmith@example.com", phone: "8765432109" },
+    { _id: 3, name: "Alice Johnson", email: "alicejohnson@example.com", phone: "7654321098" },
+    { _id: 4, name: "Bob Williams", email: "bobwilliams@example.com", phone: "6543210987" },
+    { _id: 5, name: "Charlie Brown", email: "charliebrown@example.com", phone: "5432109876" }
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5
+  }
+}
+db.persons.createIndex({
+	email: 1,
+	phone: 1
+},{ unique: true });
+email_1_phone_1
+db.persons.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  {
+    v: 2,
+    key: { email: 1, phone: 1 },
+    name: 'email_1_phone_1',
+    unique: true
+  }
+]
+db.persons.insertOne({
+    _id: 6,
+    name: "David Miller",
+    email: "johndoe@example.com",  // Duplicate email from _id: 1
+    phone: "4321098765"   // New phone number
+});
+{
+  acknowledged: true,
+  insertedId: 6
+}
+vituse vit
+switched to db vit
+show collections
+products
+sales
+db.sales.find()
+{
+  _id: 1,
+  item: 'Americanos',
+  price: 5,
+  size: 'Short',
+  quantity: 22,
+  date: 2022-01-15T08:00:00.000Z
+}
+{
+  _id: 2,
+  item: 'Cappuccino',
+  price: 6,
+  size: 'Short',
+  quantity: 12,
+  date: 2022-01-16T09:00:00.000Z
+}
+{
+  _id: 3,
+  item: 'Lattes',
+  price: 15,
+  size: 'Grande',
+  quantity: 25,
+  date: 2022-01-16T09:05:00.000Z
+}
+{
+  _id: 4,
+  item: 'Mochas',
+  price: 25,
+  size: 'Tall',
+  quantity: 11,
+  date: 2022-02-17T08:00:00.000Z
+}
+{
+  _id: 5,
+  item: 'Americanos',
+  price: 10,
+  size: 'Grande',
+  quantity: 12,
+  date: 2022-02-18T21:06:00.000Z
+}
+{
+  _id: 6,
+  item: 'Cappuccino',
+  price: 7,
+  size: 'Tall',
+  quantity: 20,
+  date: 2022-02-20T10:07:00.000Z
+}
+{
+  _id: 7,
+  item: 'Lattes',
+  price: 25,
+  size: 'Tall',
+  quantity: 30,
+  date: 2022-02-21T10:08:00.000Z
+}
+{
+  _id: 8,
+  item: 'Americanos',
+  price: 10,
+  size: 'Grande',
+  quantity: 21,
+  date: 2022-02-22T14:09:00.000Z
+}
+{
+  _id: 9,
+  item: 'Cappuccino',
+  price: 10,
+  size: 'Grande',
+  quantity: 17,
+  date: 2022-02-23T14:09:00.000Z
+}
+{
+  _id: 10,
+  item: 'Americanos',
+  price: 8,
+  size: 'Tall',
+  quantity: 15,
+  date: 2022-02-25T14:09:00.000Z
+}
+db.sales.getIndexes()
+[ { v: 2, key: { _id: 1 }, name: '_id_' } ]
+db.sales.createIndex({item:1})
+item_1
+db.sales.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  { v: 2, key: { item: 1 }, name: 'item_1' }
+]
+db.sales.find({item: 'Cappuccino'])
+SyntaxError: Unexpected token, expected "," (1:33)
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m db[33m.[39msales[33m.[39mfind({item[33m:[39m [32m'Cappuccino'[39m])
+ [90m   |[39m                                  [31m[1m^[22m[39m[0m
+db.sales.find({item: 'Cappuccino'})
+{
+  _id: 2,
+  item: 'Cappuccino',
+  price: 6,
+  size: 'Short',
+  quantity: 12,
+  date: 2022-01-16T09:00:00.000Z
+}
+{
+  _id: 6,
+  item: 'Cappuccino',
+  price: 7,
+  size: 'Tall',
+  quantity: 20,
+  date: 2022-02-20T10:07:00.000Z
+}
+{
+  _id: 9,
+  item: 'Cappuccino',
+  price: 10,
+  size: 'Grande',
+  quantity: 17,
+  date: 2022-02-23T14:09:00.000Z
+}
+db.sales.dropIndexes()
+{
+  nIndexesWas: 2,
+  msg: 'non-_id indexes dropped for collection',
+  ok: 1
+}
+db.sales.getIndexes()
+[ { v: 2, key: { _id: 1 }, name: '_id_' } ]
+db.sales.updateOne({ _id: 1 }, { $set: { email: "user1@example.com" } });
+db.sales.updateOne({ _id: 2 }, { $set: { email: "user2@example.com" } });
+db.sales.updateOne({ _id: 3 }, { $set: { email: "user3@example.com" } });
+db.sales.updateOne({ _id: 4 }, { $set: { email: "user4@example.com" } });
+db.sales.updateOne({ _id: 5 }, { $set: { email: "user5@example.com" } });
+db.sales.updateOne({ _id: 6 }, { $set: { email: "user6@example.com" } });
+db.sales.updateOne({ _id: 7 }, { $set: { email: "user7@example.com" } });
+db.sales.updateOne({ _id: 8 }, { $set: { email: "user8@example.com" } });
+db.sales.updateOne({ _id: 9 }, { $set: { email: "user9@example.com" } });
+db.sales.updateOne({ _id: 10 }, { $set: { email: "user10@example.com" } });
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.sales.createIndex({email;1},{unique:true})
+SyntaxError: Unexpected token, expected "," (1:27)
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m db[33m.[39msales[33m.[39mcreateIndex({email[33m;[39m[35m1[39m}[33m,[39m{unique[33m:[39m[36mtrue[39m})
+ [90m   |[39m                            [31m[1m^[22m[39m[0m
+db.sales.createIndex({email:1},{unique:true})
+email_1
+db.sales.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  { v: 2, key: { email: 1 }, name: 'email_1', unique: true }
+]
+db.persons.insertMany([
+    { _id: 1, name: "John Doe", email: "johndoe@example.com", phone: "9876543210" },
+    { _id: 2, name: "Jane Smith", email: "janesmith@example.com", phone: "8765432109" },
+    { _id: 3, name: "Alice Johnson", email: "alicejohnson@example.com", phone: "7654321098" },
+    { _id: 4, name: "Bob Williams", email: "bobwilliams@example.com", phone: "6543210987" },
+    { _id: 5, name: "Charlie Brown", email: "charliebrown@example.com", phone: "5432109876" }
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5
+  }
+}
+db.persons.createIndex({
+	email: 1,
+	phone: 1
+},{ unique: true });
+email_1_phone_1
+db.persons.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  {
+    v: 2,
+    key: { email: 1, phone: 1 },
+    name: 'email_1_phone_1',
+    unique: true
+  }
+]
+db.persons.insertOne({
+    _id: 6,
+    name: "David Miller",
+    email: "johndoe@example.com",  // Duplicate email from _id: 1
+    phone: "4321098765"   // New phone number
+});
+{
+  acknowledged: true,
+  insertedId: 6
+}
+vit
 
 ------------------------------------------------------------------------------------------------------------
 
 
 ## 22-March-2025--> MCQ Test till Aggrate functions  ##
 
+use mtest
+switched to db mtest
+db.sales.insertMany([
+	{ "_id" : 1, "item" : "Americanos", "price" : 5, "size": "Short", "quantity" : 22, "date" : ISODate("2022-01-15T08:00:00Z") },
+	{ "_id" : 2, "item" : "Cappuccino", "price" : 6, "size": "Short","quantity" : 12, "date" : ISODate("2022-01-16T09:00:00Z") },
+	{ "_id" : 3, "item" : "Lattes", "price" : 15, "size": "Grande","quantity" : 25, "date" : ISODate("2022-01-16T09:05:00Z") },
+	{ "_id" : 4, "item" : "Mochas", "price" : 25,"size": "Tall", "quantity" : 11, "date" : ISODate("2022-02-17T08:00:00Z") },
+	{ "_id" : 5, "item" : "Americanos", "price" : 10, "size": "Grande","quantity" : 12, "date" : ISODate("2022-02-18T21:06:00Z") },
+	{ "_id" : 6, "item" : "Cappuccino", "price" : 7, "size": "Tall","quantity" : 20, "date" : ISODate("2022-02-20T10:07:00Z") },
+	{ "_id" : 7, "item" : "Lattes", "price" : 25,"size": "Tall", "quantity" : 30, "date" : ISODate("2022-02-21T10:08:00Z") },
+	{ "_id" : 8, "item" : "Americanos", "price" : 10, "size": "Grande","quantity" : 21, "date" : ISODate("2022-02-22T14:09:00Z") },
+	{ "_id" : 9, "item" : "Cappuccino", "price" : 10, "size": "Grande","quantity" : 17, "date" : ISODate("2022-02-23T14:09:00Z") },
+	{ "_id" : 10, "item" : "Americanos", "price" : 8, "size": "Tall","quantity" : 15, "date" : ISODate("2022-02-25T14:09:00Z")}
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5,
+    '5': 6,
+    '6': 7,
+    '7': 8,
+    '8': 9,
+    '9': 10
+  }
+}
+db.sales.find({ item: "Mochas" })
+{
+  _id: 4,
+  item: 'Mochas',
+  price: 25,
+  size: 'Tall',
+  quantity: 11,
+  date: 2022-02-17T08:00:00.000Z
+}
+db.sales.find({ price: { $lt: 15 } })
+{
+  _id: 1,
+  item: 'Americanos',
+  price: 5,
+  size: 'Short',
+  quantity: 22,
+  date: 2022-01-15T08:00:00.000Z
+}
+{
+  _id: 2,
+  item: 'Cappuccino',
+  price: 6,
+  size: 'Short',
+  quantity: 12,
+  date: 2022-01-16T09:00:00.000Z
+}
+{
+  _id: 5,
+  item: 'Americanos',
+  price: 10,
+  size: 'Grande',
+  quantity: 12,
+  date: 2022-02-18T21:06:00.000Z
+}
+{
+  _id: 6,
+  item: 'Cappuccino',
+  price: 7,
+  size: 'Tall',
+  quantity: 20,
+  date: 2022-02-20T10:07:00.000Z
+}
+{
+  _id: 8,
+  item: 'Americanos',
+  price: 10,
+  size: 'Grande',
+  quantity: 21,
+  date: 2022-02-22T14:09:00.000Z
+}
+{
+  _id: 9,
+  item: 'Cappuccino',
+  price: 10,
+  size: 'Grande',
+  quantity: 17,
+  date: 2022-02-23T14:09:00.000Z
+}
+{
+  _id: 10,
+  item: 'Americanos',
+  price: 8,
+  size: 'Tall',
+  quantity: 15,
+  date: 2022-02-25T14:09:00.000Z
+}
+db.sales.find({ $or: [ { price: { $lt: 10 } }, { price: { $gt: 20 } } ] })
+{
+  _id: 1,
+  item: 'Americanos',
+  price: 5,
+  size: 'Short',
+  quantity: 22,
+  date: 2022-01-15T08:00:00.000Z
+}
+{
+  _id: 2,
+  item: 'Cappuccino',
+  price: 6,
+  size: 'Short',
+  quantity: 12,
+  date: 2022-01-16T09:00:00.000Z
+}
+{
+  _id: 4,
+  item: 'Mochas',
+  price: 25,
+  size: 'Tall',
+  quantity: 11,
+  date: 2022-02-17T08:00:00.000Z
+}
+{
+  _id: 6,
+  item: 'Cappuccino',
+  price: 7,
+  size: 'Tall',
+  quantity: 20,
+  date: 2022-02-20T10:07:00.000Z
+}
+{
+  _id: 7,
+  item: 'Lattes',
+  price: 25,
+  size: 'Tall',
+  quantity: 30,
+  date: 2022-02-21T10:08:00.000Z
+}
+{
+  _id: 10,
+  item: 'Americanos',
+  price: 8,
+  size: 'Tall',
+  quantity: 15,
+  date: 2022-02-25T14:09:00.000Z
+}
+db.sales.find({ quantity: { $exists: true } })
+{
+  _id: 1,
+  item: 'Americanos',
+  price: 5,
+  size: 'Short',
+  quantity: 22,
+  date: 2022-01-15T08:00:00.000Z
+}
+{
+  _id: 2,
+  item: 'Cappuccino',
+  price: 6,
+  size: 'Short',
+  quantity: 12,
+  date: 2022-01-16T09:00:00.000Z
+}
+{
+  _id: 3,
+  item: 'Lattes',
+  price: 15,
+  size: 'Grande',
+  quantity: 25,
+  date: 2022-01-16T09:05:00.000Z
+}
+{
+  _id: 4,
+  item: 'Mochas',
+  price: 25,
+  size: 'Tall',
+  quantity: 11,
+  date: 2022-02-17T08:00:00.000Z
+}
+{
+  _id: 5,
+  item: 'Americanos',
+  price: 10,
+  size: 'Grande',
+  quantity: 12,
+  date: 2022-02-18T21:06:00.000Z
+}
+{
+  _id: 6,
+  item: 'Cappuccino',
+  price: 7,
+  size: 'Tall',
+  quantity: 20,
+  date: 2022-02-20T10:07:00.000Z
+}
+{
+  _id: 7,
+  item: 'Lattes',
+  price: 25,
+  size: 'Tall',
+  quantity: 30,
+  date: 2022-02-21T10:08:00.000Z
+}
+{
+  _id: 8,
+  item: 'Americanos',
+  price: 10,
+  size: 'Grande',
+  quantity: 21,
+  date: 2022-02-22T14:09:00.000Z
+}
+{
+  _id: 9,
+  item: 'Cappuccino',
+  price: 10,
+  size: 'Grande',
+  quantity: 17,
+  date: 2022-02-23T14:09:00.000Z
+}
+{
+  _id: 10,
+  item: 'Americanos',
+  price: 8,
+  size: 'Tall',
+  quantity: 15,
+  date: 2022-02-25T14:09:00.000Z
+}
+db.products.insertMany([
+    { "_id" : 1, "name" : "xPhone", "price" : 799, "releaseDate": ISODate("2011-05-14"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 },"color":["white","black"],"storage":[64,128,256]},
+    { "_id" : 2, "name" : "xTablet", "price" : 899, "releaseDate": ISODate("2011-09-01") , "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 },"color":["white","black","purple"],"storage":[128,256,512]},
+    { "_id" : 3, "name" : "SmartTablet", "price" : 899, "releaseDate": ISODate("2015-01-14"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 },"color":["blue"],"storage":[16,64,128]},
+    { "_id" : 4, "name" : "SmartPad", "price" : 699, "releaseDate": ISODate("2020-05-14"),"spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256,1024]},
+    { "_id" : 5, "name" : "SmartPhone", "price" : 599,"releaseDate": ISODate("2022-09-14"), "spec" : { "ram" : 4, "screen" : 9.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256]}
+ ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5
+  }
+}
+db.products.find({ color: "white" })
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    64,
+    128,
+    256
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 16,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ]
+}
+db.products.updateOne(
+  { name: "xTablet" }, 
+  { $set: { "spec.ram": 24 } } 
+)
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.products.find({}, { _id: 0, spec: 1 })
+{
+  spec: {
+    ram: 4,
+    screen: 6.5,
+    cpu: 2.66
+  }
+}
+{
+  spec: {
+    ram: 24,
+    screen: 9.5,
+    cpu: 3.66
+  }
+}
+{
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  }
+}
+{
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  }
+}
+{
+  spec: {
+    ram: 4,
+    screen: 9.7,
+    cpu: 1.66
+  }
+}
+db.products.find().sort({ price: -1 })
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 24,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 6.5,
+    cpu: 2.66
+  },
+  color: [
+    'white',
+    'black'
+  ],
+  storage: [
+    64,
+    128,
+    256
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z,
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  releaseDate: 2022-09-14T00:00:00.000Z,
+  spec: {
+    ram: 4,
+    screen: 9.7,
+    cpu: 1.66
+  },
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ],
+  storage: [
+    128,
+    256
+  ]
+}
+db.products.find().skip(1).limit(2)
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z,
+  spec: {
+    ram: 24,
+    screen: 9.5,
+    cpu: 3.66
+  },
+  color: [
+    'white',
+    'black',
+    'purple'
+  ],
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+db.products.find({ 
+  name: { $regex: "^S", $options: "i" }, 
+  price: { $gt: 700 }  
+})
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    ram: 12,
+    screen: 9.7,
+    cpu: 3.66
+  },
+  color: [
+    'blue'
+  ],
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+db.sales.aggregate([
+  {
+    $group: {
+      _id: null, 
+      totalPrice: { $sum: { $multiply: ["$price", "$quantity"] } }
+    }
+  }
+])
+{
+  _id: null,
+  totalPrice: 2342
+}
+db.sales.find({}, { _id: 0, size: 1 })
+{
+  size: 'Short'
+}
+{
+  size: 'Short'
+}
+{
+  size: 'Grande'
+}
+{
+  size: 'Tall'
+}
+{
+  size: 'Grande'
+}
+{
+  size: 'Tall'
+}
+{
+  size: 'Tall'
+}
+{
+  size: 'Grande'
+}
+{
+  size: 'Grande'
+}
+{
+  size: 'Tall'
+}
+db.sales.aggregate([
+  {
+    $match: { size: "Tall" } 
+  },
+  {
+    $group: {
+      _id: "$item",            
+    
+    }
+  }
+])
+{
+  _id: 'Americanos'
+}
+{
+  _id: 'Mochas'
+}
+{
+  _id: 'Cappuccino'
+}
+{
+  _id: 'Lattes'
+}
+db.sales.aggregate([
+  {
+    $match: { size: "Tall" }  // Filter only documents where size is "Tall"
+  },
+  {
+    $group: {
+      _id: "$item",            // Group by item name
+      totalQuantity: { $sum: "$quantity" },  // Sum up the quantity for each item
+      totalSales: { $sum: { $multiply: ["$price", "$quantity"] } }  // Calculate total sales
+    }
+  }
+])
+{
+  _id: 'Cappuccino',
+  totalQuantity: 20,
+  totalSales: 140
+}
+{
+  _id: 'Mochas',
+  totalQuantity: 11,
+  totalSales: 275
+}
+{
+  _id: 'Lattes',
+  totalQuantity: 30,
+  totalSales: 750
+}
+{
+  _id: 'Americanos',
+  totalQuantity: 15,
+  totalSales: 120
+}
+db.sales.find().sort({ price: 1 }).skip(1).limit(1)
+{
+  _id: 2,
+  item: 'Cappuccino',
+  price: 6,
+  size: 'Short',
+  quantity: 12,
+  date: 2022-01-16T09:00:00.000Z
+}
+db.sales.aggregate([
+  {
+    $group: {
+      _id: "$item",  // Group by item name
+      totalQuantity: { $sum: "$quantity" },  // Sum up the total quantity of each item
+      avgPrice: { $avg: "$price" }  // Calculate the average price of each item
+    }
+  }
+])
+{
+  _id: 'Americanos',
+  totalQuantity: 70,
+  avgPrice: 8.25
+}
+{
+  _id: 'Cappuccino',
+  totalQuantity: 49,
+  avgPrice: 7.666666666666667
+}
+{
+  _id: 'Lattes',
+  totalQuantity: 55,
+  avgPrice: 20
+}
+{
+  _id: 'Mochas',
+  totalQuantity: 11,
+  avgPrice: 25
+}
+mtes
 
 ------------------------------------------------------------------------------------------------------------
 
 
-## 23-March-2025--> Day 33 :MongoDB Connection with Java  ##
-
-------------------------------------------------------------------------------------------------------------
-
-
-## 24-March-2025 --> Day : 34 : MongoDB Connection with Java  ##
+## 23-March-2025 & 24-March-2025 --> Day : 33,  34 : MongoDB Connection with Java  ##
 
 package practice;
 import com.mongodb.client.MongoClient;

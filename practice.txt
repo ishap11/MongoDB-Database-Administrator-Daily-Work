@@ -3555,10 +3555,1454 @@ vit
 
 
 
+------------------------------------------------------------------------------------------------------------
+
+
+## 24-March-2025 --> Day : 33 : MongoDB Connection with Java  ##
+
+package practice;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
+
+public class MongoDB_Connection {
+    
+    private static final String URI = "mongodb://localhost:27017";
+    
+    public static void main(String[] args) {
+        // Connect to MongoDB server
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            
+            // Access the database
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            
+            System.out.println("Connected to MongoDB database: " + database.getName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
 
 
 
 
+package practice;
+
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import org.bson.Document;
+
+public class MongoDB_Connection {
+    
+    private static final String URI = "mongodb://localhost:27017";
+    
+    public static void main(String[] args) {
+        // Connect to MongoDB server
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            
+            // Access the database
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            
+            System.out.println("Connected to MongoDB database: " + database.getName());
+
+            // Call the insert method
+            insert();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void insert() { // Removed String[] args, as it was unused
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            MongoCollection<Document> collection = database.getCollection("employees");
+
+            // Create a new document
+            Document employee = new Document("name", "Raj")
+                                .append("age", 30)
+                                .append("department", "IT");
+            
+            // Insert the document
+            collection.insertOne(employee);
+            
+            System.out.println("Document inserted: " + employee.toJson());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+
+
+UPDATE
+
+package practice;
+
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import org.bson.Document;
+
+public class MongoDB_Connection {
+    
+    private static final String URI = "mongodb://localhost:27017";
+    
+    public static void main(String[] args) {
+        // Connect to MongoDB server
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            // Access the database
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            System.out.println("Connected to MongoDB database: " + database.getName());
+            
+            // Call the insert method
+            insert();
+            
+            // Call the update method
+            update();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void insert() {
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            MongoCollection<Document> collection = database.getCollection("employees");
+
+            // Create a new document
+            Document employee = new Document("name", "Raj")
+                                .append("age", 30)
+                                .append("department", "IT");
+            
+            // Insert the document
+            collection.insertOne(employee);
+            System.out.println("Document inserted: " + employee.toJson());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void update() {
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            MongoCollection<Document> collection = database.getCollection("employees");
+
+            // Update the department of an employee with name "Raj"
+            collection.updateOne(Filters.eq("name", "Raj"),
+                                 Updates.set("department", "Engineering"));
+            
+            System.out.println("Document updated successfully.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+
+======================= LOGICAL OPERATOR ====================================
+
+package practice;
+
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+
+public class MongoDB_Connection {
+    
+    private static final String URI = "mongodb://localhost:27017";
+    
+    public static void main(String[] args) {
+        // Connect to MongoDB server
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            // Access the database
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            System.out.println("Connected to MongoDB database: " + database.getName());
+            
+            // Call the insert method
+            insert();
+            
+            // Call the update method
+            update();
+            
+            // Call the logical operators method
+            applyLogicalOperators();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void insert() {
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            MongoCollection<Document> collection = database.getCollection("employees");
+
+            // Create a new document
+            Document employee = new Document("name", "Raj")
+                                .append("age", 30)
+                                .append("department", "IT");
+            
+            // Insert the document
+            collection.insertOne(employee);
+            System.out.println("Document inserted: " + employee.toJson());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void update() {
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            MongoCollection<Document> collection = database.getCollection("employees");
+
+            // Update the department of an employee with name "Raj"
+            collection.updateOne(Filters.eq("name", "Raj"),
+                                 Updates.set("department", "Engineering"));
+            
+            System.out.println("Document updated successfully.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void applyLogicalOperators() {
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            MongoCollection<Document> collection = database.getCollection("employees");
+
+            // Using logical operators
+            Bson andFilter = Filters.and(Filters.eq("department", "Engineering"), Filters.gt("age", 25));
+            Bson orFilter = Filters.or(Filters.eq("department", "IT"), Filters.lt("age", 35));
+            Bson notFilter = Filters.not(Filters.eq("department", "HR"));
+            Bson norFilter = Filters.nor(Filters.eq("department", "Marketing"), Filters.eq("age", 40));
+
+            System.out.println("Documents matching AND filter: " + collection.countDocuments(andFilter));
+            System.out.println("Documents matching OR filter: " + collection.countDocuments(orFilter));
+            System.out.println("Documents matching NOT filter: " + collection.countDocuments(notFilter));
+            System.out.println("Documents matching NOR filter: " + collection.countDocuments(norFilter));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+## 25-March-2025 --> Session Cancelled ##
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+## 26-March-2025  --> Day 34 : MongoDB Insert, Read and Update operations with Java  ##
+
+package practice;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import org.bson.Document;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+
+public class MongoDB_Connection {
+    private static final String URI = "mongodb://localhost:27017";
+
+    public static void main(String[] args) {
+        // Connect to MongoDB server
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            MongoCollection<Document> collection = database.getCollection("employees");
+
+            // Fetch all documents from the collection
+            MongoCursor<Document> cursor = collection.find().iterator();
+
+            // Iterate and print each document
+            while (cursor.hasNext()) {
+                System.out.println(cursor.next().toJson());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+
+
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import org.bson.Document;
+
+public class MongoDB_Connection {
+    private static final String URI = "mongodb://localhost:27017";
+
+    public static void main(String[] args) {
+        // Connect to MongoDB server
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            MongoCollection<Document> collection = database.getCollection("employees");
+
+            // Fetch all documents from the collection
+            MongoCursor<Document> cursor = collection.find().iterator();
+
+            int index = 1; // Start index from 1
+            while (cursor.hasNext()) {
+                Document doc = cursor.next();
+                
+                // Print only if index is 1, 3, 5, 7, or 9
+                if (index % 2 != 0) {  
+                    System.out.println("Document " + index + ": " + doc.toJson());
+                }
+                
+                index++; // Increment index
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+
+
+
+
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.result.UpdateResult;
+import org.bson.Document;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+
+public class MongoDB_UpdateMany {
+    private static final String URI = "mongodb://localhost:27017";
+
+    public static void main(String[] args) {
+        // Connect to MongoDB server
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            MongoCollection<Document> collection = database.getCollection("employees");
+
+            // Define filter: Update all documents where name is 'Raj'
+            Document filter = new Document("name", "Raj");
+
+            // Define update: Change department to 'Software Development'
+            Document update = new Document("$set", new Document("department", "Software Development"));
+
+            // Perform updateMany operation
+            UpdateResult result = collection.updateMany(filter, update);
+
+            // Print the number of documents updated
+            System.out.println("Matched documents: " + result.getMatchedCount());
+            System.out.println("Modified documents: " + result.getModifiedCount());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+
+
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.result.DeleteResult;
+import org.bson.Document;
+import com.mongodb.client.model.Filters;
+
+public class MongoDB_DeleteOne {
+    private static final String URI = "mongodb://localhost:27017";
+
+    public static void main(String[] args) {
+        // Connect to MongoDB server
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            MongoCollection<Document> collection = database.getCollection("employees");
+
+            // Define filter: Delete only one document where name is 'Raj'
+            Document filter = new Document("name", "Raj");
+
+            // Perform deleteOne operation
+            DeleteResult result = collection.deleteOne(filter);
+
+            // Print the number of documents deleted
+            System.out.println("Deleted documents: " + result.getDeletedCount());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+
+
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.result.DeleteResult;
+import org.bson.Document;
+import com.mongodb.client.model.Filters;
+
+public class MongoDB_DeleteMany {
+    private static final String URI = "mongodb://localhost:27017";
+
+    public static void main(String[] args) {
+        // Connect to MongoDB server
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            MongoCollection<Document> collection = database.getCollection("employees");
+
+            // Define filter: Delete all documents where name is 'Raj'
+            Document filter = new Document("name", "Raj");
+
+            // Perform deleteMany operation
+            DeleteResult result = collection.deleteMany(filter);
+
+            // Print the number of documents deleted
+            System.out.println("Deleted documents: " + result.getDeletedCount());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+exists
+
+import com.mongodb.client.*;
+import org.bson.Document;
+import com.mongodb.client.model.Filters;
+
+public class MongoDB_Exists {
+    private static final String URI = "mongodb://localhost:27017";
+
+    public static void main(String[] args) {
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            MongoCollection<Document> collection = database.getCollection("employees");
+
+            // Find documents where the "age" field exists
+            FindIterable<Document> result = collection.find(Filters.exists("age"));
+
+            // Print the matching documents
+            for (Document doc : result) {
+                System.out.println(doc.toJson());
+            }
+        }
+    }
+}
+
+
+
+type operator
+
+import com.mongodb.client.*;
+import org.bson.Document;
+import com.mongodb.client.model.Filters;
+
+public class MongoDB_Type {
+    private static final String URI = "mongodb://localhost:27017";
+
+    public static void main(String[] args) {
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            MongoCollection<Document> collection = database.getCollection("employees");
+
+            // Find documents where "age" is of type int (2 represents int in MongoDB)
+            FindIterable<Document> result = collection.find(Filters.type("age", 2));
+
+            // Print the matching documents
+            for (Document doc : result) {
+                System.out.println(doc.toJson());
+            }
+        }
+    }
+}
+
+
+
+check array size operator
+
+import com.mongodb.client.*;
+import org.bson.Document;
+import com.mongodb.client.model.Filters;
+
+public class MongoDB_Size {
+    private static final String URI = "mongodb://localhost:27017";
+
+    public static void main(String[] args) {
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            MongoCollection<Document> collection = database.getCollection("employees");
+
+            // Find documents where "skills" array has exactly 3 elements
+            FindIterable<Document> result = collection.find(Filters.size("skills", 3));
+
+            // Print the matching documents
+            for (Document doc : result) {
+                System.out.println(doc.toJson());
+            }
+        }
+    }
+}
+
+
+all operator
+
+import com.mongodb.client.*;
+import org.bson.Document;
+import com.mongodb.client.model.Filters;
+import java.util.Arrays;
+
+public class MongoDB_All {
+    private static final String URI = "mongodb://localhost:27017";
+
+    public static void main(String[] args) {
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            MongoCollection<Document> collection = database.getCollection("employees");
+
+            // Find documents where "skills" array contains both "Java" and "MongoDB"
+            FindIterable<Document> result = collection.find(Filters.all("skills", Arrays.asList("Java", "MongoDB")));
+
+            // Print the matching documents
+            for (Document doc : result) {
+                System.out.println(doc.toJson());
+            }
+        }
+    }
+}
+
+
+
+element match operator
+
+import com.mongodb.client.*;
+import org.bson.Document;
+import com.mongodb.client.model.Filters;
+
+public class MongoDB_ElemMatch {
+    private static final String URI = "mongodb://localhost:27017";
+
+    public static void main(String[] args) {
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            MongoCollection<Document> collection = database.getCollection("employees");
+
+            // Find documents where at least one project has "completed" status
+            FindIterable<Document> result = collection.find(Filters.elemMatch("projects", Filters.eq("status", "completed")));
+
+            // Print the matching documents
+            for (Document doc : result) {
+                System.out.println(doc.toJson());
+            }
+        }
+    }
+}
+
+
+
+
+import com.mongodb.client.*;
+import org.bson.Document;
+import com.mongodb.client.model.Filters;
+import java.util.Arrays;
+
+public class MongoDB_ElementQueries {
+    private static final String URI = "mongodb://localhost:27017";
+
+    public static void main(String[] args) {
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+            MongoDatabase database = mongoClient.getDatabase("vit");
+            MongoCollection<Document> collection = database.getCollection("employees");
+
+            //  $exists - Find documents where "age" field exists
+            System.out.println("\n Documents where 'age' field exists:");
+            FindIterable<Document> existsQuery = collection.find(Filters.exists("age"));
+            for (Document doc : existsQuery) {
+                System.out.println(doc.toJson());
+            }
+
+            // $type - Find documents where "age" is of type int (2 represents int in MongoDB)
+            System.out.println("\n Documents where 'age' is an Integer:");
+            FindIterable<Document> typeQuery = collection.find(Filters.type("age", 2));
+            for (Document doc : typeQuery) {
+                System.out.println(doc.toJson());
+            }
+
+            //  $size - Find documents where "skills" array has exactly 3 elements
+            System.out.println("\n Documents where 'skills' array has exactly 3 elements:");
+            FindIterable<Document> sizeQuery = collection.find(Filters.size("skills", 3));
+            for (Document doc : sizeQuery) {
+                System.out.println(doc.toJson());
+            }
+
+            //  $all - Find documents where "skills" array contains both "Java" and "MongoDB"
+            System.out.println("\n Documents where 'skills' contains both 'Java' and 'MongoDB':");
+            FindIterable<Document> allQuery = collection.find(Filters.all("skills", Arrays.asList("Java", "MongoDB")));
+            for (Document doc : allQuery) {
+                System.out.println(doc.toJson());
+            }
+
+            //  $elemMatch - Find documents where at least one project has "completed" status
+            System.out.println("\n Documents where at least one project is 'completed':");
+            FindIterable<Document> elemMatchQuery = collection.find(Filters.elemMatch("projects", Filters.eq("status", "completed")));
+            for (Document doc : elemMatchQuery) {
+                System.out.println(doc.toJson());
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+## 27-March-2025  --> Day 35 : MongoDB and Java (Element, Sorting and Limiting and all)  ##
+
+
+package mongodb_CURD;
+
+import org.bson.Document;
+
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+
+public class MongoDBConnectionExampleVI {
+
+    private static final String URI = "mongodb://localhost:27017";
+
+    public static void main(String[] args) {
+        try (MongoClient mongoClient = MongoClients.create(URI)) {
+
+            MongoDatabase database = mongoClient.getDatabase("practice1");
+            MongoCollection<Document> collection = database.getCollection("products");
+
+        
+            System.out.println("Documents with 'description' field:");
+            try (MongoCursor<Document> cursor = collection.find(Filters.exists("spec")).iterator()) {
+                while (cursor.hasNext()) {
+                    System.out.println(cursor.next().toJson());
+                }
+            }
+
+            
+            System.out.println("\nDocuments where 'price' is a int:");
+            try (MongoCursor<Document> cursor = collection.find(Filters.type("price", "int")).iterator()) {
+                while (cursor.hasNext()) {
+                    System.out.println(cursor.next().toJson());
+                }
+            }
+
+            
+            System.out.println("\nDocuments where 'tags' array has size 3:");
+            try (MongoCursor<Document> cursor = collection.find(Filters.size("color", 3)).iterator()) {
+                while (cursor.hasNext()) {
+                    System.out.println(cursor.next().toJson());
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+sorting descending order
+
+System.out.println(("\n Sorting and Limiting"));
+            FindIterable<Document> results = collection.find()
+                    .sort(new Document("_id",-1))
+                    .skip(2)
+                    .limit(3);
+
+            try (MongoCursor<Document> cursor = results.iterator()) {
+                while (cursor.hasNext()) {
+                    System.out.println(cursor.next().toJson());
+                }
+            }
+
+
+ascending sorting
+
+System.out.println(("\n Sorting and Limiting"));
+            FindIterable<Document> results = collection.find()
+                    .sort(new Document("_id",+1))
+                    .skip(2)
+                    .limit(3);
+
+            try (MongoCursor<Document> cursor = results.iterator()) {
+                while (cursor.hasNext()) {
+                    System.out.println(cursor.next().toJson());
+                }
+            }
+
+
+
+printing odd position
+
+System.out.println(("\n Sorting and Limiting"));
+            FindIterable<Document> results = collection.find()
+                    .sort(new Document("_id",-1));
+            int index = 1;
+            try (MongoCursor<Document> cursor = results.iterator()) {
+                while (cursor.hasNext()) {
+                    Document document= cursor.next();
+                    if (index % 2 != 0) { // Check if index is odd
+                        System.out.println(document.toJson());
+                    }
+                    index++;
+                }
+            }
+
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+## 28-March-2025  --> Day 36 : MongoDB CRUD Model based student management system ##
+
+package project;
+
+public class Record {
+	 
+    // Instance variables
+    private String name;
+    private int idNumber;
+    private int contactNumber;
+ 
+    // Default Constructor
+    public Record() {}
+
+    // Parameterized Constructor
+    // @param name
+    // @param idNumber
+    // @param contactNumber
+    public Record(String name, int idNumber,
+                  int contactNumber)
+    {
+ 
+        // this keyword refers to current instance itself
+        this.name = name;
+        this.idNumber = idNumber;
+        this.contactNumber = contactNumber;
+    }
+ 
+    // Getting the value of contactNumber
+    // @return the value of contactNumber
+    public int getContactNumber() { return contactNumber; }
+ 
+    // Set the value of contactNumber
+    // @param contactNumber new value of contactNumber
+    public void setContactNumber(int contactNumber)
+    {
+ 
+        this.contactNumber = contactNumber;
+    }
+ 
+    // Getting the value of idNumber
+    // @return the value of idNumber
+    public int getIdNumber() { return idNumber; }
+ 
+    // Setting the value of idNumber
+    // @param idNumber new value of idNumber
+    public void setIdNumber(int idNumber)
+    {
+        this.idNumber = idNumber;
+    }
+ 
+    // Getting the value of name
+    // @return the value of name
+    public String getName() { return name; }
+ 
+    // Setting the value of name
+    // @param name new value of name
+    public void setName(String name) { this.name = name; }
+ 
+    // toString() Method
+    // @return
+    @Override public String toString()
+    {
+ 
+        // Returning the record
+        return "Records{"
+            + "name=" + name + ", idNumber=" + idNumber
+            + ", contactNumber=" + contactNumber + '}';
+    }
+}
+
+
+
+package project;
+
+import java.util.Scanner;
+
+//Class
+public class StudentRecordLinkedList {
+
+ // Main driver method
+ public static void main(String[] args)
+ {
+
+     // Creating HumanResourceOffice Object.
+     StudentRecordManagement hr
+         = new StudentRecordManagement();
+
+     Record record = new Record();
+         // Initial Employee record
+         // Using mutators to had code the data
+         record.setIdNumber(6862);
+     record.setContactNumber(911);
+     record.setName("Ankit");
+
+     // Calling add() record method to
+     // add static data/(Hard CodedData) to linked List
+     hr.add(record);
+
+     // Creating Scanner Object to read input
+     Scanner input = new Scanner(System.in);
+
+     // Creating option integer variable
+     int option = 0;
+
+     // Do - While loop
+     do {
+         menu();
+         option = input.nextInt();
+
+         // Switch case
+         switch (option) {
+
+         // Case 1
+         case 1:
+
+             // Display message
+             System.out.print(
+                 "What is the Student id Number ? ");
+
+             int idNumber = input.nextInt();
+
+             // Display message
+             System.out.print(
+                 "What is the Student contact Number ? ");
+
+             int contactNumber = input.nextInt();
+             input.nextLine();
+
+             // Display message
+             System.out.print(
+                 "What is the Student Name ? ");
+
+             String name = input.nextLine();
+
+             // Create record object and pass constructor
+             // parameters.
+             record = new Record(name, idNumber,
+                                 contactNumber);
+             // Call add() record
+             hr.add(record);
+             System.out.println(record.toString());
+
+             // Break statement used to terminate program
+             // from here only once it entered this case
+             break;
+
+         // Case 2
+         case 2:
+
+             // Display message
+             System.out.print(
+                 "What is the Student id number ? ");
+             int rId = input.nextInt();
+
+             // Invoke remove/delete record
+             hr.delete(rId);
+
+             break;
+
+         // Case 3
+         case 3:
+
+             // Display message
+             System.out.print(
+                 "What is the Student id number? ");
+
+             int rIdNo = input.nextInt();
+             hr.update(rIdNo, input);
+
+             break;
+
+         // Case 4
+         case 4:
+
+             // Display message
+             System.out.print(
+                 "What is the Student id ? ");
+             int bookId = input.nextInt();
+
+             if (!hr.find(bookId)) {
+                 System.out.println(
+                     "Student id does not exist\n");
+             }
+
+             break;
+
+         // Case 5
+         case 5:
+             hr.display();
+             break;
+
+         // Case 6
+         case 9:
+
+             // Display message
+             System.out.println(
+                 "\nThank you for using the program. Goodbye!\n");
+             System.exit(0);
+
+             break;
+
+         // Case 7: Default case
+         // If none above case executes
+         default:
+
+             // Print statement
+             System.out.println("\nInvalid input\n");
+             break;
+         }
+     }
+
+     // Checking condition
+     while (option != 9);
+ }
+
+ // Method 2
+ // Menu - Static menu for displaying options
+ public static void menu()
+ {
+
+     // Printing statements displaying menu on console
+     System.out.println("MENU");
+     System.out.println("1: Add Student");
+     System.out.println("2: Delete Student");
+     System.out.println("3: Update Student");
+     System.out.println("4: Search Student");
+     System.out.println("5: Display Students");
+     System.out.println("9: Exit program");
+     System.out.print("Enter your selection : ");
+ }
+}
+
+
+
+package project;
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+
+// Class
+public class StudentRecordManagement {
+ 
+    // Creating an empty LinkedList
+    LinkedList<Record> list;
+ 
+    // Default Constructor
+    public StudentRecordManagement()
+    {
+        list = new LinkedList<>();
+    }
+ 
+    // Method 1
+    // Adding Record
+    // @param record
+    public void add(Record record)
+    {
+ 
+        // Checking if a record already exists or not,
+        // if not add it to Record list, Otherwise
+        // error display message
+        if (!find(record.getIdNumber())) {
+            list.add(record);
+        }
+        else {
+ 
+            // Print statement
+            System.out.println(
+                "Record already exists in the Record list");
+        }
+    }
+ 
+    // Method 2
+    // Searching Record
+    // @param idNumber
+    //  @return
+    public boolean find(int idNumber)
+    {
+ 
+        // Iterating record list
+        // using for each loop
+        for (Record l : list) {
+ 
+            // Checking record by id Number
+            if (l.getIdNumber() == idNumber) {
+ 
+                System.out.println(l);
+                return true;
+            }
+        }
+        return false;
+    }
+ 
+    // Method 3
+    // Delete Record
+    // @param recIdNumber
+    public void delete(int recIdNumber)
+    {
+        Record recordDel = null;
+ 
+        // Iterating record list
+        for (Record ll : list) {
+ 
+            // Finding record to be deleted by id Number
+            if (ll.getIdNumber() == recIdNumber) {
+                recordDel = ll;
+            }
+        }
+ 
+        // If recordDel is null, then show error message,
+        // otherwise remove the record from Record list
+        if (recordDel == null) {
+ 
+            // Displaying no record found
+            System.out.println("Invalid record Id");
+        }
+        else {
+ 
+            list.remove(recordDel);
+ 
+            // Display message for successful deletion of
+            // record
+            System.out.println(
+                "Successfully removed record from the list");
+        }
+    }
+ 
+    // Method 4
+    // Finding Record
+    // @param idNumber
+    // @return
+    public Record findRecord(int idNumber)
+    {
+ 
+        // Iterate Record list
+        // using for each loop
+        for (Record l : list) {
+ 
+            // Checking record by id Number.
+            if (l.getIdNumber() == idNumber) {
+                return l;
+            }
+        }
+ 
+        return null;
+    }
+ 
+    // Method 5
+    // Update Record
+    // @param id
+    // @param input
+    public void update(int id, Scanner input)
+    {
+ 
+        if (find(id)) {
+            Record rec = findRecord(id);
+ 
+            // Display message only
+            System.out.print(
+                "What is the new Student id Number ? ");
+            int idNumber = input.nextInt();
+ 
+            // Display message only
+            System.out.print(
+                "What is the new Student contact Number ");
+            int contactNumber = input.nextInt();
+            input.nextLine();
+ 
+            // Display message only
+            System.out.print(
+                "What is the new Student Name ? ");
+            String name = input.nextLine();
+ 
+            rec.setIdNumber(idNumber);
+            rec.setName(name);
+            rec.setContactNumber(contactNumber);
+            System.out.println(
+                "Record Updated Successfully");
+        }
+        else {
+ 
+            // Print statement
+            System.out.println(
+                "Record Not Found in the Student list");
+        }
+    }
+ 
+    // Method 6
+    // Display Records
+    public void display()
+    {
+ 
+        // If record list is empty then
+        // print the message below
+        if (list.isEmpty()) {
+ 
+            // Print statement
+            System.out.println("The list has no records\n");
+        }
+        // Iterating Record list
+        // using for each loop
+        for (Record record : list) {
+ 
+            // Printing the list
+            System.out.println(record.toString());
+        }
+    }
+}
+
+MongoDB Connection Class (DatabaseConnection.java)
+package project;
+
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
+
+public class DatabaseConnection {
+    private static MongoDatabase database;
+
+    // Static block to initialize connection
+    static {
+        try {
+            MongoClientURI uri = new MongoClientURI("mongodb://localhost:27017");
+            MongoClient mongoClient = new MongoClient(uri);
+            database = mongoClient.getDatabase("StudentDB");
+            System.out.println("Connected to MongoDB successfully!");
+        } catch (Exception e) {
+            System.out.println("MongoDB Connection Error: " + e.getMessage());
+        }
+    }
+
+    // Getter method to get the database instance
+    public static MongoDatabase getDatabase() {
+        return database;
+    }
+}
+
+
+
+
+ Student Record Class (Record.java)
+
+package project;
+
+import org.bson.Document;
+
+public class Record {
+    private String name;
+    private int idNumber;
+    private int contactNumber;
+
+    // Constructor
+    public Record(String name, int idNumber, int contactNumber) {
+        this.name = name;
+        this.idNumber = idNumber;
+        this.contactNumber = contactNumber;
+    }
+
+    // Convert Object to JSON (MongoDB format)
+    public Document toDocument() {
+        return new Document("name", name)
+                .append("idNumber", idNumber)
+                .append("contactNumber", contactNumber);
+    }
+
+    // Convert JSON (MongoDB format) to Object
+    public static Record fromDocument(Document doc) {
+        return new Record(doc.getString("name"), doc.getInteger("idNumber"), doc.getInteger("contactNumber"));
+    }
+
+    @Override
+    public String toString() {
+        return "Student Record { " +
+                "Name: '" + name + '\'' +
+                ", ID Number: " + idNumber +
+                ", Contact Number: " + contactNumber +
+                " }";
+    }
+}
+
+
+
+MongoDB-Based Student Record Management (StudentRecordManagement.java)
+
+package project;
+
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import org.bson.Document;
+import java.util.Scanner;
+
+public class StudentRecordManagement {
+    private final MongoCollection<Document> studentCollection;
+
+    // Constructor to initialize the collection
+    public StudentRecordManagement() {
+        MongoDatabase database = DatabaseConnection.getDatabase();
+        this.studentCollection = database.getCollection("students");
+    }
+
+    // 1️⃣ Add Student Record
+    public void add(Record record) {
+        if (!find(record.getIdNumber())) {
+            studentCollection.insertOne(record.toDocument());
+            System.out.println("Student added successfully!");
+        } else {
+            System.out.println("Record already exists!");
+        }
+    }
+
+    // 2️⃣ Find Student Record (returns true if found)
+    public boolean find(int idNumber) {
+        Document found = studentCollection.find(Filters.eq("idNumber", idNumber)).first();
+        if (found != null) {
+            System.out.println(Record.fromDocument(found));
+            return true;
+        }
+        return false;
+    }
+
+    // 3️⃣ Delete Student Record
+    public void delete(int idNumber) {
+        long deletedCount = studentCollection.deleteOne(Filters.eq("idNumber", idNumber)).getDeletedCount();
+        if (deletedCount > 0) {
+            System.out.println("Student deleted successfully!");
+        } else {
+            System.out.println("Record not found!");
+        }
+    }
+
+    // 4️⃣ Update Student Record
+    public void update(int idNumber, Scanner input) {
+        if (find(idNumber)) {
+            System.out.print("Enter new Name: ");
+            String newName = input.nextLine();
+            System.out.print("Enter new Contact Number: ");
+            int newContact = input.nextInt();
+            input.nextLine(); // Consume newline
+
+            studentCollection.updateOne(Filters.eq("idNumber", idNumber),
+                    Updates.combine(Updates.set("name", newName), Updates.set("contactNumber", newContact)));
+
+            System.out.println("Record Updated Successfully!");
+        } else {
+            System.out.println("Record not found!");
+        }
+    }
+
+    // 5️⃣ Display All Student Records
+    public void display() {
+        studentCollection.find().forEach(doc -> System.out.println(Record.fromDocument(doc)));
+    }
+}
+
+
+
+Main Driver Class (StudentRecordLinkedList.java)
+
+package project;
+
+import java.util.Scanner;
+
+public class StudentRecordLinkedList {
+    public static void main(String[] args) {
+        StudentRecordManagement sr = new StudentRecordManagement();
+        Scanner input = new Scanner(System.in);
+
+        int option;
+        do {
+            menu();
+            option = input.nextInt();
+            input.nextLine(); // Consume newline
+
+            switch (option) {
+                case 1:
+                    System.out.print("Enter Student ID: ");
+                    int id = input.nextInt();
+                    System.out.print("Enter Contact Number: ");
+                    int contact = input.nextInt();
+                    input.nextLine(); // Consume newline
+                    System.out.print("Enter Name: ");
+                    String name = input.nextLine();
+
+                    sr.add(new Record(name, id, contact));
+                    break;
+
+                case 2:
+                    System.out.print("Enter Student ID to Delete: ");
+                    sr.delete(input.nextInt());
+                    break;
+
+                case 3:
+                    System.out.print("Enter Student ID to Update: ");
+                    sr.update(input.nextInt(), input);
+                    break;
+
+                case 4:
+                    System.out.print("Enter Student ID to Search: ");
+                    sr.find(input.nextInt());
+                    break;
+
+                case 5:
+                    sr.display();
+                    break;
+
+                case 9:
+                    System.out.println("Exiting the program. Goodbye!");
+                    input.close();
+                    System.exit(0);
+                    break;
+
+                default:
+                    System.out.println("Invalid option! Please try again.");
+            }
+        } while (option != 9);
+    }
+
+    public static void menu() {
+        System.out.println("\nMENU");
+        System.out.println("1: Add Student");
+        System.out.println("2: Delete Student");
+        System.out.println("3: Update Student");
+        System.out.println("4: Search Student");
+        System.out.println("5: Display Students");
+        System.out.println("9: Exit program");
+        System.out.print("Enter your selection: ");
+    }
+}
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+## 28-March-2025  --> Day 36 : MongoDB CRUD Model based student management system ##
+
+mogodb_crud_practice
+
+import com.mongodb.MongoClient;
+import com.mongodb.MongoCredential;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
+import java.util.Scanner;
+
+public class MongoDBLoginSystem {
+    public static void main(String[] args) {
+        // Connecting to MongoDB server
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+
+        // Creating Credentials (Optional, remove if authentication is not enabled)
+        MongoCredential credential = MongoCredential.createCredential("sampleUser", "userDB", "password".toCharArray());
+        System.out.println("Connected to MongoDB successfully!");
+
+        // Accessing the database
+        MongoDatabase database = mongoClient.getDatabase("userDB");
+
+        // Creating a collection (if it doesn't exist)
+        MongoCollection<Document> collection = database.getCollection("users");
+
+        // Inserting five user documents into MongoDB
+        collection.insertOne(new Document("id", 1).append("username", "user1").append("password", "pass1"));
+        collection.insertOne(new Document("id", 2).append("username", "user2").append("password", "pass2"));
+        collection.insertOne(new Document("id", 3).append("username", "user3").append("password", "pass3"));
+        collection.insertOne(new Document("id", 4).append("username", "user4").append("password", "pass4"));
+        collection.insertOne(new Document("id", 5).append("username", "user5").append("password", "pass5"));
+
+        System.out.println("User data inserted successfully!");
+
+        // Login system
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Username: ");
+        String inputUsername = scanner.nextLine();
+        System.out.print("Enter Password: ");
+        String inputPassword = scanner.nextLine();
+
+        // Checking credentials in the database
+        Document user = collection.find(new Document("username", inputUsername).append("password", inputPassword)).first();
+
+        if (user != null) {
+            System.out.println("Login Successful! Welcome to the Homepage.");
+        } else {
+            System.out.println("Invalid Username or Password! Access Denied.");
+        }
+
+        scanner.close();
+        mongoClient.close();
+    }
+}
 
 
 ------------------------------------------------------------------------------------------------------------
